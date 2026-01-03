@@ -54,6 +54,19 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'category',
+      title: 'Category',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Pilgrimage', value: 'Pilgrimage' },
+          { title: 'Adventure', value: 'Adventure' },
+          { title: 'Nature', value: 'Nature' },
+          { title: 'Leisure', value: 'Leisure' },
+        ],
+      },
+    }),
+    defineField({
       name: 'seo',
       title: 'SEO Settings',
       type: 'object',

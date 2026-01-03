@@ -69,6 +69,12 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'rating',
+      title: 'Rating (0-5)',
+      type: 'number',
+      validation: (Rule) => Rule.min(0).max(5).precision(1),
+    }),
+    defineField({
       name: 'price',
       title: 'Starting Price',
       type: 'number',

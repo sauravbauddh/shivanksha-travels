@@ -1,0 +1,39 @@
+@theme {
+  /* Colors */
+  --color-primary: #13ec5b;
+  --color-primary-dark: #0fb847;
+  --color-surface: #f5f5f7;
+  --color-surface-dark: #1d1d1f;
+  --color-text-main: #1d1d1f;
+  --color-text-sub: #86868b;
+
+  /* Fonts */
+  --font-display: var(--font-jakarta);
+  --font-body: var(--font-noto);
+
+  /* Border Radius */
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.75rem;
+  --radius-4xl: 2.25rem;
+
+  /* Spacing */
+  --spacing-18: 4.5rem;
+}
+
+/* Custom Utilities */
+.apple-glass {
+  @apply bg-white/80 dark:bg-black/80 backdrop-blur-2xl border-b border-black/5 dark:border-white/10;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#1d1d1f] to-[#4a4a4f] dark:from-white dark:to-[#a1a1a6];
+}
+
+/* Hide Scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

@@ -1,12 +1,23 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Plus_Jakarta_Sans, Noto_Sans } from 'next/font/google';
+import { Navbar } from '@/components/layout/Navbar';
+import { TemporaryFooter } from '@/components/layout/TemporaryFooter';
+import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import './globals.css';
 import { defaultMetadata } from '@/config/seo';
 
-const inter = Inter({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-inter',
+  variable: '--font-jakarta',
+  weight: ['400', '500', '600', '700', '800'],
+});
+
+const notoSans = Noto_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-noto',
+  weight: ['400', '500', '600', '700'],
 });
 
 export const metadata: Metadata = defaultMetadata;
@@ -17,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
@@ -43,7 +54,20 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.variable} antialiased`}>{children}</body>
+      <body
+        className={`${jakarta.variable} ${notoSans.variable} antialiased font-display`}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Navbar />
+          {children}
+          <TemporaryFooter />
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

@@ -11,6 +11,7 @@ export async function getFeaturedPackages() {
       mainImage,
       duration,
       price,
+      rating,
       highlights
     }`
   );
@@ -27,6 +28,7 @@ export async function getAllPackages() {
       mainImage,
       duration,
       price,
+      rating,
       featured
     }`
   );
@@ -44,6 +46,7 @@ export async function getPackageBySlug(slug: string) {
       gallery,
       duration,
       price,
+      rating,
       destinations[]-> {
         name,
         slug,
@@ -68,7 +71,8 @@ export async function getAllDestinations() {
       slug,
       description,
       image,
-      country
+      country,
+      category
     }`
   );
 }
@@ -76,6 +80,7 @@ export async function getAllDestinations() {
 // Fetch featured testimonials
 export async function getFeaturedTestimonials() {
   return client.fetch(
+    // Assuming fields exist in schema based on current query
     `*[_type == "testimonial" && featured == true] | order(_createdAt desc) {
       _id,
       customerName,
@@ -120,5 +125,16 @@ export async function getBlogPostBySlug(slug: string) {
       seo
     }`,
     { slug }
+  );
+}
+
+// Fetch global site content (Hero, Footer, Contact)
+export async function getSiteContent() {
+  return client.fetch(
+    `*[_type == "siteContent"][0] {
+      _id,
+      heroSection,
+      contactDetails
+    }`
   );
 }

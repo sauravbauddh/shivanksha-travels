@@ -1,0 +1,87 @@
+import React from 'react';
+import { Button } from '@/components/ui/Button';
+import { Icon } from '@/components/ui/Icon';
+import { getSiteContent } from '@/lib/sanity/queries';
+import { urlFor } from '@/lib/sanity/image';
+import Link from 'next/link';
+
+export const HeroSection = async () => {
+  const data = await getSiteContent();
+  const hero = data?.heroSection;
+
+  const bgImage = hero?.heroImage
+    ? urlFor(hero.heroImage).url()
+    : 'https://lh3.googleusercontent.com/aida-public/AB6AXuB9xJWldKFNzLs2GKFXFGLSyYs1n8loyqFa0XuTNZGTxSjkaKNNhTDAt8ox_fcejIkl44qUgyWqWZbUWdD3K5OM2aL0wT-vDchW4ZkZwtMWgXbA5coio8PwIqq3KreBlUbzVaacSs1es0NF0dSwyat9EOfR2y0tuaEG4-tsfnGhH_QuuZFFyWkyg5FedNxmfVhgmV_Iq_gLbgymeH7uQxreXQn4pQtuynbQlzA940qJRdXTAxLgW2e5DE000GGguNeqbXJgthrH4dk5';
+
+  return (
+    <section className="relative w-full h-[90vh] md:h-screen pt-16 flex flex-col items-center justify-end md:justify-center overflow-hidden bg-black">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img
+          alt={hero?.heroTitle || 'Himalayas'}
+          className="w-full h-full object-cover opacity-80 md:opacity-90"
+          src={bgImage}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80 md:to-transparent"></div>
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 pb-20 md:pb-0 text-center md:text-left flex flex-col md:items-center">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-6 drop-shadow-2xl text-center">
+          {hero?.heroTitle ? (
+            hero.heroTitle
+          ) : (
+            <>
+              Divine. <br className="md:hidden" />
+              <span className="text-primary-dark">Unexplored.</span>
+            </>
+          )}
+        </h1>
+
+        <p className="text-lg md:text-2xl font-medium text-gray-200 max-w-2xl text-center mb-10 mx-auto leading-relaxed">
+          {hero?.heroSubtitle || (
+            <>
+              Experience the spiritual majesty of Uttarakhand.{' '}
+              <br className="hidden md:block" />
+              Curated journeys for the modern pilgrim.
+            </>
+          )}
+        </p>
+
+        <div className="flex flex-col md:flex-row gap-4 justify-center w-full items-center">
+          <Button variant="primary" size="xl" className="min-w-[200px]">
+            Explore Packages
+          </Button>
+
+          {hero?.heroVideo ? (
+            <Link href={hero.heroVideo} target="_blank">
+              <Button
+                variant="ghost"
+                className="text-white hover:text-primary text-base font-semibold group"
+              >
+                Watch the Film
+                <Icon
+                  name="play_circle"
+                  size={24}
+                  className="ml-2 group-hover:translate-x-1 transition-transform"
+                />
+              </Button>
+            </Link>
+          ) : (
+            <Button
+              variant="ghost"
+              className="text-white hover:text-primary text-base font-semibold group"
+            >
+              Watch the Film
+              <Icon
+                name="play_circle"
+                size={24}
+                className="ml-2 group-hover:translate-x-1 transition-transform"
+              />
+            </Button>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+};
