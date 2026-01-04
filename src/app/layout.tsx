@@ -22,6 +22,8 @@ const notoSans = Noto_Sans({
 
 export const metadata: Metadata = defaultMetadata;
 
+import { JsonLd } from '@/components/seo/JsonLd';
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -30,29 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'TravelAgency',
-              name: 'Shivanksha Travels',
-              url: 'https://shivankshatravels.in',
-              logo: 'https://shivankshatravels.in/logo.png',
-              description:
-                'Discover unforgettable travel experiences with Shivanksha Travels. We offer customized tour packages, destination guides, and expert travel planning services.',
-              address: {
-                '@type': 'PostalAddress',
-                addressCountry: 'IN',
-              },
-              sameAs: [
-                'https://facebook.com/shivankshatravels',
-                'https://instagram.com/shivankshatravels',
-                'https://twitter.com/shivankshatravels',
-              ],
-            }),
-          }}
-        />
+        <JsonLd />
       </head>
       <body
         className={`${jakarta.variable} ${notoSans.variable} antialiased font-display`}
