@@ -8,7 +8,7 @@ import { urlFor } from '@/lib/sanity/image';
 import { Destination, Package, Testimonial } from '@/types/home.types';
 
 // Toggle this to switch between Mock Data and Sanity CMS
-const USE_MOCK_DATA = true;
+const USE_MOCK_DATA = false;
 
 export async function getFeatures() {
   // Features are static for now as there is no Sanity schema for them

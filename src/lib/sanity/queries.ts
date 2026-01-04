@@ -133,7 +133,9 @@ export async function getSiteContent() {
   return client.fetch(
     `*[_type == "siteContent"][0] {
       _id,
+      logo,
       heroSection,
+      gallerySection,
       contactDetails
     }`
   );

@@ -15,6 +15,9 @@ import {
   Mail,
   Heart,
   Quote,
+  Play,
+  X,
+  LayoutGrid,
   LucideProps,
 } from 'lucide-react';
 
@@ -24,6 +27,9 @@ const iconMap = {
   search: Search,
   menu: Menu,
   play_circle: PlayCircle,
+  play_arrow: Play,
+  close: X,
+  grid_view: LayoutGrid,
   diversity_3: Users,
   verified_user: ShieldCheck,
   currency_rupee: IndianRupee,

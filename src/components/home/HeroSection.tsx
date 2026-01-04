@@ -1,13 +1,11 @@
-import React from 'react';
-import { Button } from '@/components/ui/Button';
-import { Icon } from '@/components/ui/Icon';
 import { getSiteContent } from '@/lib/sanity/queries';
 import { urlFor } from '@/lib/sanity/image';
-import Link from 'next/link';
+import Image from 'next/image';
 
 export const HeroSection = async () => {
   const data = await getSiteContent();
   const hero = data?.heroSection;
+  const logoUrl = data?.logo ? urlFor(data.logo).url() : null;
 
   const bgImage = hero?.heroImage
     ? urlFor(hero.heroImage).url()
@@ -18,16 +16,15 @@ export const HeroSection = async () => {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
-          alt={hero?.heroTitle || 'Himalayas'}
-          className="w-full h-full object-cover opacity-80 md:opacity-90"
+          alt={hero?.heroTitle || 'DevBhoomi'}
+          className="w-full h-full object-cover opacity-80 md:opacity-90 dark:opacity-80 dark:md:opacity-90"
           src={bgImage}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80 md:to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-transparent to-white/90 md:to-transparent dark:from-black/30 dark:via-transparent dark:to-black/80 dark:md:to-transparent"></div>
       </div>
-
       {/* Content */}
-      <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 pb-20 md:pb-0 text-center md:text-left flex flex-col md:items-center">
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-6 drop-shadow-2xl text-center">
+      <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 pb-20 md:pb-0 text-center flex flex-col items-center">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-text-main dark:text-white mb-6 drop-shadow-2xl text-center">
           {hero?.heroTitle ? (
             hero.heroTitle
           ) : (
@@ -38,7 +35,7 @@ export const HeroSection = async () => {
           )}
         </h1>
 
-        <p className="text-lg md:text-2xl font-medium text-gray-200 max-w-2xl text-center mb-10 mx-auto leading-relaxed">
+        <p className="text-lg md:text-2xl font-medium text-text-sub dark:text-gray-200 max-w-2xl text-center mb-10 mx-auto leading-relaxed">
           {hero?.heroSubtitle || (
             <>
               Experience the spiritual majesty of Uttarakhand.{' '}
@@ -48,7 +45,20 @@ export const HeroSection = async () => {
           )}
         </p>
 
-        <div className="flex flex-col md:flex-row gap-4 justify-center w-full items-center">
+        {/* Logo below subtitle */}
+        {logoUrl && (
+          <div className="relative w-32 h-32 md:w-40 md:h-40 mb-10 animate-in fade-in zoom-in duration-1000 delay-300">
+            <Image
+              src={logoUrl}
+              alt="Logo"
+              fill
+              className="object-contain drop-shadow-lg"
+              priority
+            />
+          </div>
+        )}
+
+        {/* <div className="flex flex-col md:flex-row gap-4 justify-center w-full items-center">
           <Button variant="primary" size="xl" className="min-w-[200px]">
             Explore Packages
           </Button>
@@ -80,7 +90,7 @@ export const HeroSection = async () => {
               />
             </Button>
           )}
-        </div>
+        </div> */}
       </div>
     </section>
   );

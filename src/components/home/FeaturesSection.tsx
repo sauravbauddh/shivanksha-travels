@@ -1,4 +1,3 @@
-import React from 'react';
 import { Card } from '@/components/ui/Card';
 import { Icon, IconName } from '@/components/ui/Icon';
 import { getFeatures } from '@/lib/data';
@@ -11,11 +10,11 @@ export const FeaturesSection = async () => {
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-text-main dark:text-white mb-4">
-            Why Dev Bhoomi?
+            Why Shivanksha Travels?
           </h2>
           <p className="text-text-sub text-lg md:text-xl max-w-2xl mx-auto">
             We don't just take you there. We ensure you feel the spirit of the
-            mountains.
+            <span className="font-bold"> Dev Bhoomi.</span>
           </p>
         </div>
 

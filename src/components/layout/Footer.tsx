@@ -11,7 +11,7 @@ export const Footer = () => {
             <Logo className="mb-6" />
             <p className="text-text-sub text-sm leading-relaxed max-w-xs">
               Crafting unforgettable spiritual and adventure journeys in the
-              heart of the Himalayas.
+              heart of Dev Bhoomi.
             </p>
           </div>
 

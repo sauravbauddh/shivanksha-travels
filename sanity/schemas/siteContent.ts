@@ -14,6 +14,14 @@ export default defineType({
       initialValue: 'Main Site Settings',
     }),
 
+    defineField({
+      name: 'logo',
+      title: 'Site Logo',
+      type: 'image',
+      description: 'Upload the site logo here.',
+      options: { hotspot: true },
+    }),
+
     // Hero Section
     defineField({
       name: 'heroSection',
@@ -47,6 +55,116 @@ export default defineType({
           type: 'url',
           description:
             'URL for the "Watch the Film" button (e.g., YouTube link).',
+        }),
+      ],
+    }),
+
+    // Gallery Section
+    defineField({
+      name: 'gallerySection',
+      title: 'Gallery Section',
+      type: 'object',
+      options: { collapsible: true, collapsed: false },
+      fields: [
+        defineField({
+          name: 'title',
+          title: 'Section Title',
+          type: 'string',
+          initialValue: 'Gallery.',
+        }),
+        defineField({
+          name: 'subtitle',
+          title: 'Section Subtitle',
+          type: 'string',
+          initialValue: 'Moments that take your breath away.',
+        }),
+        defineField({
+          name: 'galleryItems',
+          title: 'Gallery Items',
+          type: 'array',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                defineField({
+                  name: 'mediaType',
+                  title: 'Media Type',
+                  type: 'string',
+                  options: {
+                    list: [
+                      { title: 'Image', value: 'image' },
+                      { title: 'Video', value: 'video' },
+                    ],
+                    layout: 'radio',
+                  },
+                  initialValue: 'image',
+                }),
+                defineField({
+                  name: 'image',
+                  title: 'Image',
+                  type: 'image',
+                  options: { hotspot: true },
+                  hidden: ({ parent }) => parent?.mediaType === 'video',
+                }),
+                defineField({
+                  name: 'videoUrl',
+                  title: 'Video URL',
+                  type: 'url',
+                  description:
+                    'Direct URL to the video file (e.g., mp4) or supported video link.',
+                  hidden: ({ parent }) => parent?.mediaType !== 'video',
+                }),
+                defineField({
+                  name: 'thumbnail',
+                  title: 'Video Thumbnail',
+                  type: 'image',
+                  description:
+                    'Poster image for the video (Required for video items)',
+                  options: { hotspot: true },
+                  hidden: ({ parent }) => parent?.mediaType !== 'video',
+                }),
+                defineField({
+                  name: 'alt',
+                  title: 'Alt Text / Description',
+                  type: 'string',
+                }),
+                defineField({
+                  name: 'width',
+                  title: 'Width Class',
+                  type: 'string',
+                  description:
+                    'Tailwind width class (e.g., w-64, w-80, w-96). Default is auto/flexible.',
+                  options: {
+                    list: [
+                      { title: 'Small (w-64)', value: 'w-64' },
+                      { title: 'Medium (w-80)', value: 'w-80' },
+                      { title: 'Large (w-96)', value: 'w-96' },
+                      { title: 'Extra Large (w-[500px])', value: 'w-[500px]' },
+                      {
+                        title: 'Video Wide (aspect-video)',
+                        value: 'aspect-video',
+                      },
+                    ],
+                  },
+                }),
+              ],
+              preview: {
+                select: {
+                  title: 'alt',
+                  mediaType: 'mediaType',
+                  image: 'image',
+                  thumbnail: 'thumbnail',
+                },
+                prepare({ title, mediaType, image, thumbnail }) {
+                  return {
+                    title: title || (mediaType === 'video' ? 'Video' : 'Image'),
+                    subtitle: mediaType,
+                    media: mediaType === 'video' ? thumbnail : image,
+                  };
+                },
+              },
+            },
+          ],
         }),
       ],
     }),
