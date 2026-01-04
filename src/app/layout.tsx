@@ -20,7 +20,25 @@ const notoSans = Noto_Sans({
   weight: ['400', '500', '600', '700'],
 });
 
-export const metadata: Metadata = defaultMetadata;
+import { getSiteContent } from '@/lib/sanity/queries';
+import { urlFor } from '@/lib/sanity/image';
+
+export async function generateMetadata(): Promise<Metadata> {
+  const data = await getSiteContent();
+  const logoUrl = data?.logo ? urlFor(data.logo).url() : null;
+  console.log('Debug: generateMetadata logoUrl:', logoUrl);
+
+  return {
+    ...defaultMetadata,
+    icons: logoUrl
+      ? {
+          icon: logoUrl,
+          shortcut: logoUrl,
+          apple: logoUrl,
+        }
+      : defaultMetadata.icons,
+  };
+}
 
 import { JsonLd } from '@/components/seo/JsonLd';
 
