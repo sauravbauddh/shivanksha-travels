@@ -1,6 +1,8 @@
 import { getSiteContent } from '@/lib/sanity/queries';
 import { urlFor } from '@/lib/sanity/image';
 import Image from 'next/image';
+import { Button } from '@/components/ui/Button';
+import Link from 'next/link';
 
 export const HeroSection = async () => {
   const data = await getSiteContent();
@@ -47,14 +49,21 @@ export const HeroSection = async () => {
 
         {/* Logo below subtitle */}
         {logoUrl && (
-          <div className="relative w-32 h-32 md:w-40 md:h-40 mb-10 animate-in fade-in zoom-in duration-1000 delay-300">
-            <Image
-              src={logoUrl}
-              alt="Logo"
-              fill
-              className="object-contain drop-shadow-lg"
-              priority
-            />
+          <div className="flex flex-col items-center gap-8 mb-10 animate-in fade-in zoom-in duration-1000 delay-300">
+            <div className="relative w-32 h-32 md:w-40 md:h-40">
+              <Image
+                src={logoUrl}
+                alt="Logo"
+                fill
+                className="object-contain drop-shadow-lg"
+                priority
+              />
+            </div>
+            <a href="#contact">
+              <Button variant="primary" size="lg" className="shadow-xl">
+                Contact Us
+              </Button>
+            </a>
           </div>
         )}
 

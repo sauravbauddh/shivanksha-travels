@@ -16,7 +16,10 @@ export const TemporaryFooter = async () => {
   const encodedAddress = encodeURIComponent(mapAddress);
 
   return (
-    <footer className="bg-white dark:bg-black pt-20 pb-10 border-t border-gray-100 dark:border-white/5">
+    <footer
+      id="contact"
+      className="bg-white dark:bg-black pt-20 pb-10 border-t border-gray-100 dark:border-white/5"
+    >
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
           <div className="col-span-1">

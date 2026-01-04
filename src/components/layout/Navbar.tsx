@@ -1,6 +1,7 @@
 import React from 'react';
 import { Logo } from './Logo';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
+import { Button } from '@/components/ui/Button';
 import Link from 'next/link';
 import { getSiteContent } from '@/lib/sanity/queries';
 import { urlFor } from '@/lib/sanity/image';
@@ -46,6 +47,11 @@ export const Navbar = async () => {
 
         {/* Actions */}
         <div className="flex items-center gap-4">
+          <a href="#contact">
+            <Button variant="primary" size="sm">
+              Contact Us
+            </Button>
+          </a>
           {/* <Icon
             name="search"
             size={20}
