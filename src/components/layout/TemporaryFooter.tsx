@@ -1,15 +1,14 @@
 import React from 'react';
 import { Logo } from './Logo';
 import Link from 'next/link';
-import { getSiteContent } from '@/lib/sanity/queries';
-import { urlFor } from '@/lib/sanity/image';
+import { getSiteContent } from '@/lib/data';
 import { Instagram, Facebook, Twitter } from 'lucide-react';
 
 export const TemporaryFooter = async () => {
   const data = await getSiteContent();
   const contact = data?.contactDetails || {};
   const social = contact?.socialLinks || {};
-  const logoUrl = data?.logo ? urlFor(data.logo).url() : null;
+  const logoUrl = data?.logo || null;
 
   // Use the address from CMS for the map, fallback to a default if missing
   const mapAddress = contact.address || 'Rishikesh, Uttarakhand, India';

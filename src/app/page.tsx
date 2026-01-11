@@ -5,13 +5,14 @@ import { FeaturesSection } from '@/components/home/FeaturesSection';
 import { TestimonialsSection } from '@/components/home/TestimonialsSection';
 import { GallerySection } from '@/components/home/GallerySection';
 import { Metadata } from 'next';
-import { getSiteContent } from '@/lib/sanity/queries';
-import { urlFor } from '@/lib/sanity/image';
+import { getSiteContent } from '@/lib/data';
+import { DestinationsSection } from '@/components/home/DestinationsSection';
+import { PackagesSection } from '@/components/home/PackagesSection';
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await getSiteContent();
   const hero = data?.heroSection;
-  const logoUrl = data?.logo ? urlFor(data.logo).url() : null;
+  const logoUrl = data?.logo || null;
 
   const title = 'Shivanksha Travels';
   const description =
@@ -55,8 +56,8 @@ export default function Home() {
     <main className="flex flex-col min-h-screen">
       <HeroSection />
       <FeaturesSection />
-      {/* <DestinationsSection /> */}
-      {/* <PackagesSection /> */}
+      <DestinationsSection />
+      <PackagesSection />
       <GallerySection />
       <TestimonialsSection />
     </main>

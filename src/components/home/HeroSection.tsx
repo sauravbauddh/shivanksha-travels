@@ -1,16 +1,14 @@
-import { getSiteContent } from '@/lib/sanity/queries';
-import { urlFor } from '@/lib/sanity/image';
+import { getSiteContent } from '@/lib/data';
 import Image from 'next/image';
 import { Button } from '@/components/ui/Button';
-import Link from 'next/link';
 
 export const HeroSection = async () => {
   const data = await getSiteContent();
   const hero = data?.heroSection;
-  const logoUrl = data?.logo ? urlFor(data.logo).url() : null;
+  const logoUrl = data?.logo;
 
   const bgImage = hero?.heroImage
-    ? urlFor(hero.heroImage).url()
+    ? hero.heroImage
     : 'https://lh3.googleusercontent.com/aida-public/AB6AXuB9xJWldKFNzLs2GKFXFGLSyYs1n8loyqFa0XuTNZGTxSjkaKNNhTDAt8ox_fcejIkl44qUgyWqWZbUWdD3K5OM2aL0wT-vDchW4ZkZwtMWgXbA5coio8PwIqq3KreBlUbzVaacSs1es0NF0dSwyat9EOfR2y0tuaEG4-tsfnGhH_QuuZFFyWkyg5FedNxmfVhgmV_Iq_gLbgymeH7uQxreXQn4pQtuynbQlzA940qJRdXTAxLgW2e5DE000GGguNeqbXJgthrH4dk5';
 
   return (

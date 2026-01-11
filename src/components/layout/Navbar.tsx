@@ -3,12 +3,11 @@ import { Logo } from './Logo';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import { Button } from '@/components/ui/Button';
 import Link from 'next/link';
-import { getSiteContent } from '@/lib/sanity/queries';
-import { urlFor } from '@/lib/sanity/image';
+import { getSiteContent } from '@/lib/data';
 
 export const Navbar = async () => {
   const data = await getSiteContent();
-  const logoUrl = data?.logo ? urlFor(data.logo).url() : null;
+  const logoUrl = data?.logo || null;
 
   return (
     <nav className="fixed top-0 w-full z-50 apple-glass transition-all duration-300">

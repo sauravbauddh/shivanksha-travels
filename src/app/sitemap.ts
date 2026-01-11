@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { getAllPackages, getAllBlogPosts } from '@/lib/sanity/queries';
+import { getAllPackages, getAllBlogPosts } from '@/lib/data'; // Need to ensure these exist or mock
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://shivankshatravels.in';
@@ -44,8 +44,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const blogPosts = await getAllBlogPosts();
 
     // Package pages
-    const packagePages = packages.map((pkg: { slug: { current: string } }) => ({
-      url: `${baseUrl}/packages/${pkg.slug.current}`,
+    const packagePages = packages.map((pkg) => ({
+      url: `${baseUrl}/packages/${pkg.slug}`,
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.8,

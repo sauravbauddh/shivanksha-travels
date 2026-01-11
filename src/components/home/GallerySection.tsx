@@ -1,5 +1,5 @@
 import React from 'react';
-import { getSiteContent } from '@/lib/sanity/queries';
+import { getSiteContent } from '@/lib/data';
 import { GalleryClient } from './GalleryClient';
 
 export const GallerySection = async () => {

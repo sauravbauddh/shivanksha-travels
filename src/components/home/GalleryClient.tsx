@@ -2,13 +2,12 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { urlFor } from '@/lib/sanity/image';
 import { Icon } from '@/components/ui/Icon';
 
 interface GalleryItem {
   mediaType: 'image' | 'video';
-  image?: any;
-  thumbnail?: any;
+  image?: string;
+  thumbnail?: string;
   videoUrl?: string;
   alt?: string;
   width?: string;
@@ -106,7 +105,7 @@ export const GalleryClient = ({ gallery }: GalleryClientProps) => {
                   <video
                     src={item.videoUrl}
                     poster={
-                      item.thumbnail ? urlFor(item.thumbnail).url() : undefined
+                      item.thumbnail || undefined
                     }
                     className="w-full h-full object-cover"
                     muted
@@ -127,7 +126,7 @@ export const GalleryClient = ({ gallery }: GalleryClientProps) => {
                 </div>
               ) : item.image ? (
                 <Image
-                  src={urlFor(item.image).url()}
+                  src={item.image}
                   alt={item.alt || 'Gallery Image'}
                   fill
                   className="object-cover hover:scale-105 transition-transform duration-700"
@@ -177,7 +176,7 @@ export const GalleryClient = ({ gallery }: GalleryClientProps) => {
                           src={item.videoUrl}
                           poster={
                             item.thumbnail
-                              ? urlFor(item.thumbnail).url()
+                              ? item.thumbnail
                               : undefined
                           }
                           className="w-full h-full object-cover"
@@ -195,7 +194,7 @@ export const GalleryClient = ({ gallery }: GalleryClientProps) => {
                       </div>
                     ) : item.image ? (
                       <Image
-                        src={urlFor(item.image).url()}
+                        src={item.image}
                         alt={item.alt || 'Gallery Image'}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -239,7 +238,7 @@ export const GalleryClient = ({ gallery }: GalleryClientProps) => {
             ) : selectedItem.image ? (
               <div className="relative w-full h-full flex items-center justify-center">
                 <Image
-                  src={urlFor(selectedItem.image).url()}
+                  src={selectedItem.image}
                   alt={selectedItem.alt || 'Full View'}
                   width={1920}
                   height={1080}

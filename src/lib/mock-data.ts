@@ -63,6 +63,7 @@ export const DESTINATIONS: Destination[] = [
 export const PACKAGES: Package[] = [
   {
     id: 'char-dham-heli',
+    slug: 'char-dham-heli',
     title: 'Char Dham by Heli',
     description:
       'The ultimate pilgrimage experience with VIP darshan and luxury stays.',
@@ -74,6 +75,7 @@ export const PACKAGES: Package[] = [
   },
   {
     id: 'rishikesh-rafting',
+    slug: 'rishikesh-rafting',
     title: 'Rishikesh Rafting',
     description:
       'Adrenaline pumping white water rafting and serene camping by the Ganges.',
@@ -85,6 +87,7 @@ export const PACKAGES: Package[] = [
   },
   {
     id: 'jim-corbett-safari',
+    slug: 'jim-corbett-safari',
     title: 'Jim Corbett Safari',
     description:
       "Explore India's oldest national park and spot the majestic Bengal Tiger.",

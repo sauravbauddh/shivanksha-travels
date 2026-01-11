@@ -1,11 +1,10 @@
-import { getSiteContent } from '@/lib/sanity/queries';
-import { urlFor } from '@/lib/sanity/image';
+import { getSiteContent } from '@/lib/data';
 
 export const JsonLd = async () => {
   const data = await getSiteContent();
   const contact = data?.contactDetails || {};
   const social = contact?.socialLinks || {};
-  const logoUrl = data?.logo ? urlFor(data.logo).url() : null;
+  const logoUrl = data?.logo || null;
 
   const sameAs = [social.instagram].filter(Boolean);
 

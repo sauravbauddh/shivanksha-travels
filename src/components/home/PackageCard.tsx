@@ -47,9 +47,9 @@ export const PackageCard = ({ pkg }: PackageCardProps) => {
               ₹{pkg.price.toLocaleString('en-IN')}
             </p>
           </div>
-          <button className="text-primary hover:text-primary-dark font-bold text-sm transition-colors">
+          <div className="text-primary hover:text-primary-dark font-bold text-sm transition-colors cursor-pointer">
             Details
-          </button>
+          </div>
         </div>
       </div>
     </Card>

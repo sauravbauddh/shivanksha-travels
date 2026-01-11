@@ -16,7 +16,9 @@ export const PackagesSection = async () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {packages.map((pkg) => (
-            <PackageCard key={pkg.id} pkg={pkg} />
+            <Link href="/package-demo" key={pkg.id} className="block h-full">
+              <PackageCard pkg={pkg} />
+            </Link>
           ))}
         </div>
 

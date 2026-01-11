@@ -20,12 +20,11 @@ const notoSans = Noto_Sans({
   weight: ['400', '500', '600', '700'],
 });
 
-import { getSiteContent } from '@/lib/sanity/queries';
-import { urlFor } from '@/lib/sanity/image';
+import { getSiteContent } from '@/lib/data';
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await getSiteContent();
-  const logoUrl = data?.logo ? urlFor(data.logo).url() : null;
+  const logoUrl = data?.logo || null;
   console.log('Debug: generateMetadata logoUrl:', logoUrl);
 
   return {
