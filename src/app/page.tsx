@@ -7,6 +7,8 @@ import { GallerySection } from '@/components/home/GallerySection';
 import { Metadata } from 'next';
 import { getSiteContent } from '@/lib/sanity/queries';
 import { urlFor } from '@/lib/sanity/image';
+import { DestinationsSection } from '@/components/home/DestinationsSection';
+import { PackagesSection } from '@/components/home/PackagesSection';
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await getSiteContent();
@@ -55,8 +57,8 @@ export default function Home() {
     <main className="flex flex-col min-h-screen">
       <HeroSection />
       <FeaturesSection />
-      {/* <DestinationsSection /> */}
-      {/* <PackagesSection /> */}
+      <DestinationsSection />
+      <PackagesSection />
       <GallerySection />
       <TestimonialsSection />
     </main>

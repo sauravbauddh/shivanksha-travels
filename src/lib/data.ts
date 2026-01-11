@@ -38,9 +38,9 @@ export async function getDestinations(): Promise<Destination[]> {
 }
 
 export async function getPackages(): Promise<Package[]> {
-  if (USE_MOCK_DATA) {
+  // if (USE_MOCK_DATA) {
     return PACKAGES;
-  }
+  // }
 
   try {
     const data = await getFeaturedPackages();
