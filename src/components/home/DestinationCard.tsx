@@ -5,13 +5,14 @@ import Link from 'next/link';
 
 interface DestinationCardProps {
   destination: Destination;
+  className?: string;
 }
 
-export const DestinationCard = ({ destination }: DestinationCardProps) => {
+export const DestinationCard = ({ destination, className }: DestinationCardProps) => {
   return (
     <Link
       href={`/destinations/${destination.id}`}
-      className="snap-center shrink-0 w-[85vw] md:w-[400px] h-[500px] relative rounded-3xl overflow-hidden group cursor-pointer border border-white/10 block"
+      className={`snap-center shrink-0 relative rounded-3xl overflow-hidden group cursor-pointer border border-white/10 block ${className || 'w-[85vw] md:w-[400px] h-[500px]'}`}
     >
       <img
         alt={destination.name}

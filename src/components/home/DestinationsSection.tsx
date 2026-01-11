@@ -18,7 +18,7 @@ export const DestinationsSection = async () => {
         </div>
 
         <Link
-          href="#"
+          href="/destinations"
           className="hidden md:flex items-center gap-1 text-primary hover:text-primary-dark font-semibold transition-colors group"
         >
           View All{' '}
