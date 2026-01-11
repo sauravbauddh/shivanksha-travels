@@ -71,6 +71,7 @@ export const PACKAGES: Package[] = [
     duration: '6 Days',
     rating: 4.5,
     price: 145000,
+    destinationId: 'kedarnath',
   },
   {
     id: 'rishikesh-rafting',
@@ -82,6 +83,7 @@ export const PACKAGES: Package[] = [
     duration: '3 Days',
     rating: 5,
     price: 4999,
+    destinationId: 'rishikesh',
   },
   {
     id: 'jim-corbett-safari',
@@ -93,6 +95,43 @@ export const PACKAGES: Package[] = [
     duration: '4 Days',
     rating: 4,
     price: 12500,
+    destinationId: 'nainital', // Assuming near Nainital for categorization
+  },
+  {
+    id: 'kedarnath-trek',
+    title: 'Kedarnath Trekking Expedition',
+    description:
+      'A spiritual journey on foot, witnessing the raw beauty of the Himalayas.',
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuB2Vutf79P1JbferUB1rSGpd69m8ljjjv6zsEvJp_dmufWeKRxkU8lHtFbFBr85UejtCJt6nYoBi_KVfsArxdYP6ZDGVkwN5dtIpk9yTTiS63d1biIlebMeRddsTV6HtP-bJtpZILMtSQnkCFtPsu1Wb3PQ-dGb1eU3QOMT0bJp0wzeyAB6a-8f3UxGByD73msQgTr0RUq82C9C02Kr5GRv378feujSbKww0kR2QcToaGUzLxfnEfnMr-OPSsT4KG1S1tvQhcD-vwDW',
+    duration: '5 Days',
+    rating: 4.8,
+    price: 18500,
+    destinationId: 'kedarnath',
+  },
+  {
+    id: 'valley-of-flowers-trek',
+    title: 'Valley of Flowers Trek',
+    description:
+      'Walk through the UNESCO World Heritage site amidst blooming alpine flowers.',
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuAk8w9qbyjTBUHrYEBr3ZiUU1NfKgMGI8EJW42U4B7b8Pq3YWdIK8U5skTa6hud6Fl7skZph-Y44gCU0kIFb4eu7kHwRyvOs-KV7zrSZU5ao4UL7N6PB_PSUEHo5O2bJTbHgotk6_v1HLq9AreCB7AaGtBA2WkOsgtdcl4qUVgCDAXiyL44r7GJ_Z5xKM5wLbLcyA8gUp0BH90k8sHd7cQOO5TUyyn_RJX5w0ZxbgLjmdZgZLbyQenvoXY_M64_2YL54w2je0KhRtCT',
+    duration: '6 Days',
+    rating: 4.7,
+    price: 15000,
+    destinationId: 'valley-of-flowers',
+  },
+  {
+    id: 'nainital-leisure',
+    title: 'Nainital Leisure Week',
+    description:
+      'Relax by the lake, enjoy boat rides, and explore the colonial heritage.',
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuBzt2icQrPH0hYRJ3Gvbpz5nfDxrg4UeDc-6sQtnvIrarVLmOmM3pnsjhUTl8iOGC0JhZUu_J1wQH1Fjo-EJeoI1RrK8ccsEz7c31gVdo2TEhtg--aV15JHKfYbcMsTB4WWM-6P1F3zoEBSGtcCH4GKxW9pBgW6QKILuD4HdlSQKbtw6CM1EZOCl9S0t_UxCz8fAW2XhN9ZZPzAnQ33q-X4wWtSc3OYwky_Mj3Nz99cljYBiOtF5EyEgPhuPehtu0ZG4mABUxv5ELv8',
+    duration: '4 Days',
+    rating: 4.2,
+    price: 18000,
+    destinationId: 'nainital',
   },
 ];
 

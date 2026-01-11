@@ -1,6 +1,7 @@
 import React from 'react';
 import { Destination } from '@/types/home.types';
 import { Badge } from '@/components/ui/Badge';
+import Link from 'next/link';
 
 interface DestinationCardProps {
   destination: Destination;
@@ -8,7 +9,10 @@ interface DestinationCardProps {
 
 export const DestinationCard = ({ destination }: DestinationCardProps) => {
   return (
-    <div className="snap-center shrink-0 w-[85vw] md:w-[400px] h-[500px] relative rounded-3xl overflow-hidden group cursor-pointer border border-white/10">
+    <Link
+      href={`/destinations/${destination.id}`}
+      className="snap-center shrink-0 w-[85vw] md:w-[400px] h-[500px] relative rounded-3xl overflow-hidden group cursor-pointer border border-white/10 block"
+    >
       <img
         alt={destination.name}
         src={destination.image}
@@ -27,6 +31,6 @@ export const DestinationCard = ({ destination }: DestinationCardProps) => {
           {destination.description}
         </p>
       </div>
-    </div>
+    </Link>
   );
 };

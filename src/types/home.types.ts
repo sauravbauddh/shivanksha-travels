@@ -23,6 +23,7 @@ export interface Package {
   rating: number; // 0-5
   price: number;
   featured?: boolean;
+  destinationId?: string;
 }
 
 export interface Testimonial {

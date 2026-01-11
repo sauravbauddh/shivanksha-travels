@@ -16,9 +16,9 @@ export async function getFeatures() {
 }
 
 export async function getDestinations(): Promise<Destination[]> {
-  if (USE_MOCK_DATA) {
+  // if (USE_MOCK_DATA) {
     return DESTINATIONS;
-  }
+  // }
 
   try {
     const data = await getAllDestinations();
@@ -37,15 +37,31 @@ export async function getDestinations(): Promise<Destination[]> {
   }
 }
 
-export async function getPackages(): Promise<Package[]> {
+export async function getDestination(id: string): Promise<Destination | undefined> {
   // if (USE_MOCK_DATA) {
-    return PACKAGES;
+    return DESTINATIONS.find((d) => d.id === id);
   // }
 
+  // Fallback to fetch all and find, or implement getDestinationById in sanity queries
+  const destinations = await getDestinations();
+  return destinations.find((d) => d.id === id);
+}
+
+export async function getPackages(destinationId?: string): Promise<Package[]> {
+  // if (USE_MOCK_DATA) {
+    let packages = PACKAGES;
+    if (destinationId) {
+      packages = packages.filter((p) => p.destinationId === destinationId);
+    }
+    return packages;
+  // }
+
+  /*
+  // Sanity implementation would look something like this:
   try {
-    const data = await getFeaturedPackages();
+    const data = await getFeaturedPackages(); // Needs update to support filtering
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return data.map((item: any) => ({
+    let packages = data.map((item: any) => ({
       id: item._id,
       title: item.title,
       description: item.description,
@@ -53,12 +69,20 @@ export async function getPackages(): Promise<Package[]> {
       duration: item.duration,
       rating: item.rating || 0,
       price: item.price,
-      featured: true, // Since we are fetching featured packages
+      featured: true,
+      destinationId: item.destination?._ref // Assuming reference exists
     }));
+
+    if (destinationId) {
+        // pure client side filtering for now if query doesn't support it
+        // In real app, you'd pass params to query
+    }
+    return packages;
   } catch (error) {
     console.error('Error fetching packages:', error);
     return [];
   }
+  */
 }
 
 export async function getTestimonials(): Promise<Testimonial[]> {
