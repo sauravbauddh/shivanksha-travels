@@ -1,7 +1,9 @@
-import { DESTINATIONS, FEATURES, PACKAGES, TESTIMONIALS } from './mock-data';
+import { FEATURES, TESTIMONIALS } from './mock-data';
 import {
+  fetchDestinationBySlug,
   getAllDestinations,
   getFeaturedPackages,
+  getPackagesByDestinationSlug,
   getFeaturedTestimonials,
 } from '@/lib/sanity/queries';
 import { urlFor } from '@/lib/sanity/image';
@@ -16,16 +18,13 @@ export async function getFeatures() {
 }
 
 export async function getDestinations(): Promise<Destination[]> {
-  // if (USE_MOCK_DATA) {
-    return DESTINATIONS;
-  // }
-
   try {
     const data = await getAllDestinations();
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
     return data.map((item: any) => ({
       id: item._id,
       name: item.name,
+      slug: item.slug,
       description: item.description,
       image: item.image ? urlFor(item.image).url() : '',
       rating: undefined, // Destination schema doesn't have rating in mock data types, but interface has optional rating
@@ -37,52 +36,61 @@ export async function getDestinations(): Promise<Destination[]> {
   }
 }
 
-export async function getDestination(id: string): Promise<Destination | undefined> {
-  // if (USE_MOCK_DATA) {
-    return DESTINATIONS.find((d) => d.id === id);
-  // }
-
-  // Fallback to fetch all and find, or implement getDestinationById in sanity queries
-  const destinations = await getDestinations();
-  return destinations.find((d) => d.id === id);
+export async function getDestinationBySlug(
+  slug: string
+): Promise<Destination | null> {
+  try {
+    const data = await fetchDestinationBySlug(slug);
+    console.log(data);
+    return {
+      id: data.id,
+      name: data.name,
+      slug: data.slug,
+      description: data.description,
+      image: data.image ? urlFor(data.image).url() : '',
+      rating: undefined, // Destination schema doesn't have rating in mock data types, but interface has optional rating
+      category: data.category,
+    };
+  } catch (error) {
+    console.error('Error fetching destination by slug:', error);
+    return null;
+  }
 }
 
-export async function getPackages(destinationId?: string): Promise<Package[]> {
-  // if (USE_MOCK_DATA) {
-    let packages = PACKAGES;
-    if (destinationId) {
-      packages = packages.filter((p) => p.destinationId === destinationId);
-    }
-    return packages;
-  // }
-
-  /*
-  // Sanity implementation would look something like this:
+export async function getPackages(
+  destinationSlug?: string
+): Promise<Package[]> {
   try {
-    const data = await getFeaturedPackages(); // Needs update to support filtering
+    let data;
+    console.log('Destination:', destinationSlug);
+    if (destinationSlug) {
+      // Fetch packages for a specific destination
+      data = await getPackagesByDestinationSlug(destinationSlug);
+    } else {
+      // Fetch all packages
+      data = await getFeaturedPackages();
+    }
+
+    console.log('Packages: ', data);
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let packages = data.map((item: any) => ({
+    const packages = data.map((item: any) => ({
       id: item._id,
       title: item.title,
       description: item.description,
       image: item.mainImage ? urlFor(item.mainImage).url() : '',
       duration: item.duration,
       rating: item.rating || 0,
-      price: item.price,
-      featured: true,
-      destinationId: item.destination?._ref // Assuming reference exists
+      featured: item.featured || false,
+      slug: item.slug?.current,
+      destinationSlug: item.destinations?.[0]?.slug?.current, // Primary destination
     }));
 
-    if (destinationId) {
-        // pure client side filtering for now if query doesn't support it
-        // In real app, you'd pass params to query
-    }
     return packages;
   } catch (error) {
     console.error('Error fetching packages:', error);
     return [];
   }
-  */
 }
 
 export async function getTestimonials(): Promise<Testimonial[]> {

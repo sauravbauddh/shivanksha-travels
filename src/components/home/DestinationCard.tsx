@@ -11,7 +11,7 @@ interface DestinationCardProps {
 export const DestinationCard = ({ destination, className }: DestinationCardProps) => {
   return (
     <Link
-      href={`/destinations/${destination.id}`}
+      href={`/destinations/${destination.slug.current}`}
       className={`snap-center shrink-0 relative rounded-3xl overflow-hidden group cursor-pointer border border-white/10 block ${className || 'w-[85vw] md:w-[400px] h-[500px]'}`}
     >
       <img

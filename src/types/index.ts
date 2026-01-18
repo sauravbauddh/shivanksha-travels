@@ -18,7 +18,6 @@ export interface TravelPackage {
   mainImage: SanityImage;
   gallery?: SanityImage[];
   duration: string;
-  price: number;
   destinations?: Destination[];
   highlights?: string[];
   inclusions?: string[];

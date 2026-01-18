@@ -25,7 +25,7 @@ export const Navbar = async () => {
             Destinations
           </Link>
           <Link
-            href="/#packages"
+            href="/packages"
             className="hover:text-black dark:hover:text-white transition-colors"
           >
             Packages

@@ -1,5 +1,5 @@
 import { TravelPackage } from '@/types';
-import { Star, Share2, Heart, Check, X, ChevronDown } from 'lucide-react';
+import { Star, Share2, Heart, Check, X } from 'lucide-react';
 
 export interface PackageDetailsProps {
   packageData: TravelPackage & {
@@ -14,7 +14,6 @@ export interface PackageDetailsProps {
       available: boolean;
       startDates?: string[];
     };
-    discountedPrice?: number;
   };
 }
 
@@ -97,8 +96,8 @@ export function PackageDetails({ packageData }: PackageDetailsProps) {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 relative">
-        <div className="lg:col-span-8 flex flex-col gap-16">
+      <div className="max-w-5xl mx-auto">
+        <div className="flex flex-col gap-16">
           {/* Overview */}
           <section>
             <h2 className="text-2xl font-semibold text-text-main dark:text-white mb-6">
@@ -217,90 +216,30 @@ export function PackageDetails({ packageData }: PackageDetailsProps) {
               </div>
             </div>
           </section>
-        </div>
 
-        {/* Sidebar */}
-        <div className="lg:col-span-4 relative">
-          <div className="sticky top-24">
-            <div className="bg-white dark:bg-[#1c1c1e] rounded-[2rem] p-8 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] border border-gray-100 dark:border-gray-800">
-              <div className="mb-6">
-                <p className="text-sm text-text-sub mb-1">Price per person</p>
-                <div className="flex items-baseline gap-2">
-                  <span className="text-4xl font-semibold text-text-main dark:text-white">
-                    ₹{packageData.price.toLocaleString()}
-                  </span>
-                  {packageData.discountedPrice && (
-                    <span className="text-lg text-text-sub line-through">
-                      ₹{packageData.discountedPrice.toLocaleString()}
-                    </span>
-                  )}
-                </div>
-              </div>
-              <form className="space-y-5">
-                <div className="space-y-2">
-                  <label className="text-xs font-semibold text-text-sub uppercase ml-1">
-                    Dates
-                  </label>
-                  <div className="relative">
-                    <input
-                      className="w-full bg-gray-50 dark:bg-black/20 border-0 rounded-2xl py-4 px-4 text-text-main dark:text-white focus:ring-2 focus:ring-blue-500 text-sm font-medium cursor-pointer"
-                      type="date"
-                    />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <label className="text-xs font-semibold text-text-sub uppercase ml-1">
-                    Travelers
-                  </label>
-                  <div className="relative">
-                    <button
-                      className="w-full flex items-center justify-between bg-gray-50 dark:bg-black/20 rounded-2xl py-4 px-4 text-text-main dark:text-white hover:bg-gray-100 dark:hover:bg-black/40 transition-colors text-left"
-                      type="button"
-                    >
-                      <span className="text-sm font-medium">2 Adults</span>
-                      <ChevronDown className="w-5 h-5 text-gray-400" />
-                    </button>
-                  </div>
-                </div>
-                <div className="space-y-2">
-                    <label className="text-xs font-semibold text-text-sub uppercase ml-1">Room Class</label>
-                    <div className="grid grid-cols-2 gap-3">
-                        <label className="cursor-pointer relative">
-                            <input type="radio" name="room" className="peer sr-only" defaultChecked />
-                            <div className="rounded-2xl border-2 border-transparent bg-gray-50 dark:bg-black/20 p-4 text-center hover:bg-gray-100 dark:hover:bg-black/30 peer-checked:border-blue-500 peer-checked:bg-blue-50/50 dark:peer-checked:bg-blue-900/20 transition-all">
-                                <span className="block text-sm font-semibold">Standard</span>
-                            </div>
-                        </label>
-                         <label className="cursor-pointer relative">
-                            <input type="radio" name="room" className="peer sr-only" />
-                            <div className="rounded-2xl border-2 border-transparent bg-gray-50 dark:bg-black/20 p-4 text-center hover:bg-gray-100 dark:hover:bg-black/30 peer-checked:border-blue-500 peer-checked:bg-blue-50/50 dark:peer-checked:bg-blue-900/20 transition-all">
-                                <span className="block text-sm font-semibold">Deluxe</span>
-                            </div>
-                        </label>
-                    </div>
-                </div>
-
-                <div className="pt-4 pb-2">
-                  <button
-                    className="w-full bg-black dark:bg-white text-white dark:text-black font-semibold text-base py-4 rounded-full hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-lg shadow-black/10"
-                    type="button"
-                  >
-                    Book Now
-                  </button>
-                  <p className="text-center text-[10px] text-text-sub mt-3">
-                    Free cancellation up to 48h before trip.
-                  </p>
-                </div>
-              </form>
-               <div className="mt-6 pt-6 border-t border-gray-100 dark:border-gray-800 flex items-center gap-3">
-                    <div className="size-10 rounded-full bg-gray-200 overflow-hidden" style={{ backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuDriZu6FulpOJmiOmi-_4lo5-Trhn3L3DM1QqU9g5lldpNn9TzRXk7d53GcqzwsVQ95qV6iSJV3hvETP-GnWhBFNzDZttkbdv-LSTne2Ir_eSHEeGRQaYEc5G1kFNBLcuuMvwTFbQz5pv7CDTBlaowDUK4IzPiTr5-6M7Ng_3tQvRZ5RjQYKqKCl7jII5eJabpxijbL6XFCXhFowePUKqbVC3nolo6nZkP1-WTjYuTbk1sPQtUt1sja7qj7Hz9M2Fn_dDoMp_Ms4xeE')`, backgroundSize: 'cover' }}></div>
-                    <div>
-                        <p className="text-xs text-text-sub font-medium">Operated by</p>
-                        <p className="text-sm font-semibold text-text-main dark:text-white">Himalayan Adventures</p>
-                    </div>
-                </div>
+          {/* Contact for Booking CTA */}
+          <section className="bg-gradient-to-r from-primary/10 to-blue-500/10 dark:from-primary/20 dark:to-blue-500/20 rounded-3xl p-10 text-center">
+            <h3 className="text-2xl font-semibold text-text-main dark:text-white mb-3">
+              Interested in this package?
+            </h3>
+            <p className="text-text-sub mb-6 max-w-2xl mx-auto">
+              Contact us directly to customize this itinerary, get detailed pricing, and book your perfect journey.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="/contact"
+                className="inline-flex items-center justify-center px-8 py-4 bg-black dark:bg-white text-white dark:text-black font-semibold rounded-full hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-lg"
+              >
+                Contact Us
+              </a>
+              <a
+                href="tel:+919876543210"
+                className="inline-flex items-center justify-center px-8 py-4 bg-white dark:bg-gray-800 text-black dark:text-white font-semibold rounded-full border-2 border-gray-200 dark:border-gray-700 hover:border-primary dark:hover:border-primary transition-all duration-200"
+              >
+                Call Now
+              </a>
             </div>
-          </div>
+          </section>
         </div>
       </div>
     </main>

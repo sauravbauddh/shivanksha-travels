@@ -32,7 +32,7 @@ export const DestinationsSection = async () => {
 
       <div className="flex overflow-x-auto gap-6 px-6 pb-12 snap-x snap-mandatory no-scrollbar md:px-[calc((100vw-1200px)/2+24px)]">
         {destinations.map((destination) => (
-          <DestinationCard key={destination.id} destination={destination} />
+          <DestinationCard key={destination.slug.current} destination={destination} />
         ))}
       </div>
     </section>

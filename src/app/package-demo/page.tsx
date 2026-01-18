@@ -15,7 +15,6 @@ const mockPackageData: TravelPackage & {
     available: boolean;
     startDates?: string[];
   };
-  discountedPrice?: number;
 } = {
   _id: '1',
   title: 'Divine Uttarakhand: 5 Days of Bliss.',
@@ -31,8 +30,6 @@ const mockPackageData: TravelPackage & {
     },
   },
   duration: '5 Days',
-  price: 15999,
-  discountedPrice: 22999,
   rating: 4.9,
   reviewCount: 120,
   locations: ['Haridwar', 'Rishikesh', 'Mussoorie'],

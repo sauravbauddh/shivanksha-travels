@@ -17,6 +17,28 @@ export async function getFeaturedPackages() {
   );
 }
 
+export async function getPackagesByDestinationSlug(slug: string) {
+  return client.fetch(
+    `*[_type == "travelPackage" && references(*[_type == "destination" && slug.current == $slug][0]._id)] | order(_createdAt desc) {
+      _id,
+      title,
+      slug,
+      description,
+      mainImage,
+      duration,
+      price,
+      rating,
+      featured,
+      destinations[]-> {
+        _id,
+        name,
+        slug
+      }
+    }`,
+    { slug }
+  );
+}
+
 // Fetch all travel packages
 export async function getAllPackages() {
   return client.fetch(
@@ -74,6 +96,22 @@ export async function getAllDestinations() {
       country,
       category
     }`
+  );
+}
+
+// Fetch single destination by slug
+export async function fetchDestinationBySlug(slug: string) {
+  return client.fetch(
+    `*[_type == "destination" && slug.current == $slug][0] {
+      _id,
+      name,
+      slug,
+      description,
+      image,
+      country,
+      category
+    }`,
+    { slug }
   );
 }
 

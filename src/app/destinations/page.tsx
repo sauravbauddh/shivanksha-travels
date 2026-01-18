@@ -56,7 +56,7 @@ export default async function DestinationListingPage() {
                // For now, I'll assume I'll update DestinationCard to be flexible or wrap it.
                // Actually, let's look at the verification step.
                // I'll update DestinationCard first to accept className for width overrides.
-                <div key={destination.id} className="w-full aspect-[4/3] [&>a]:w-full [&>a]:h-full">
+                <div key={destination.slug.current} className="w-full aspect-[4/3] [&>a]:w-full [&>a]:h-full">
                      <DestinationCard destination={destination} />
                 </div>
             ))}
