@@ -38,18 +38,10 @@ export const PackageCard = ({ pkg }: PackageCardProps) => {
           </p>
         </div>
 
-        <div className="mt-auto flex items-end justify-between pt-6 border-t border-gray-100 dark:border-white/10">
-          <div>
-            <p className="text-xs text-text-sub uppercase tracking-wider">
-              From
-            </p>
-            <p className="text-xl font-bold text-text-main dark:text-white">
-              ₹{pkg.price.toLocaleString('en-IN')}
-            </p>
+        <div className="mt-auto flex items-end justify-end pt-6 border-t border-gray-100 dark:border-white/10">
+          <div className="text-primary hover:text-primary-dark font-bold text-sm transition-colors cursor-pointer">
+            View Details →
           </div>
-          <button className="text-primary hover:text-primary-dark font-bold text-sm transition-colors">
-            Details
-          </button>
         </div>
       </div>
     </Card>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { getTestimonials } from '@/lib/data';
-import { Star } from 'lucide-react';
+import { Star, User } from 'lucide-react';
 
 export const TestimonialsSection = async () => {
   const testimonials = await getTestimonials();
@@ -45,11 +45,17 @@ export const TestimonialsSection = async () => {
                 </p>
 
                 <div className="flex items-center gap-4 mt-auto">
-                  <img
-                    alt={testimonial.name}
-                    src={testimonial.image}
-                    className="w-12 h-12 rounded-full object-cover"
-                  />
+                  {testimonial.image ? (
+                    <img
+                      alt={testimonial.name}
+                      src={testimonial.image}
+                      className="w-12 h-12 rounded-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+                      <User className="w-6 h-6 text-gray-400" />
+                    </div>
+                  )}
                   <div className="text-left">
                     <p className="text-sm font-bold text-text-main dark:text-white">
                       {testimonial.name}

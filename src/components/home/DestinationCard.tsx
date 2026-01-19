@@ -1,14 +1,19 @@
 import React from 'react';
 import { Destination } from '@/types/home.types';
 import { Badge } from '@/components/ui/Badge';
+import Link from 'next/link';
 
 interface DestinationCardProps {
   destination: Destination;
+  className?: string;
 }
 
-export const DestinationCard = ({ destination }: DestinationCardProps) => {
+export const DestinationCard = ({ destination, className }: DestinationCardProps) => {
   return (
-    <div className="snap-center shrink-0 w-[85vw] md:w-[400px] h-[500px] relative rounded-3xl overflow-hidden group cursor-pointer border border-white/10">
+    <Link
+      href={`/destinations/${destination.slug.current}`}
+      className={`snap-center shrink-0 relative rounded-3xl overflow-hidden group cursor-pointer border border-white/10 block ${className || 'w-[85vw] md:w-[400px] h-[500px]'}`}
+    >
       <img
         alt={destination.name}
         src={destination.image}
@@ -27,6 +32,6 @@ export const DestinationCard = ({ destination }: DestinationCardProps) => {
           {destination.description}
         </p>
       </div>
-    </div>
+    </Link>
   );
 };

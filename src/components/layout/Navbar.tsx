@@ -1,6 +1,5 @@
 import React from 'react';
 import { Logo } from './Logo';
-import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import { Button } from '@/components/ui/Button';
 import Link from 'next/link';
 import { getSiteContent } from '@/lib/sanity/queries';
@@ -18,32 +17,26 @@ export const Navbar = async () => {
         </Link>
 
         {/* Desktop Links */}
-        {/* <div className="hidden md:flex items-center gap-8 text-xs font-medium text-text-main/80 dark:text-gray-300">
+        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-text-main/80 dark:text-gray-300">
           <Link
-            href="#"
+            href="/destinations"
             className="hover:text-black dark:hover:text-white transition-colors"
           >
             Destinations
           </Link>
           <Link
-            href="#"
+            href="/packages"
             className="hover:text-black dark:hover:text-white transition-colors"
           >
             Packages
           </Link>
           <Link
-            href="#"
+            href="#contact"
             className="hover:text-black dark:hover:text-white transition-colors"
           >
-            About
+            Contact
           </Link>
-          <Link
-            href="#"
-            className="hover:text-black dark:hover:text-white transition-colors"
-          >
-            Journal
-          </Link>
-        </div> */}
+        </div>
 
         {/* Actions */}
         <div className="flex items-center gap-4">

@@ -26,7 +26,7 @@ export const HeroSection = async () => {
       </div>
       {/* Content */}
       <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 pb-20 md:pb-0 text-center flex flex-col items-center">
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-text-main dark:text-white mb-6 drop-shadow-2xl text-center">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-gray-900 mb-6 drop-shadow-2xl text-center">
           {hero?.heroTitle ? (
             hero.heroTitle
           ) : (
@@ -37,7 +37,7 @@ export const HeroSection = async () => {
           )}
         </h1>
 
-        <p className="text-lg md:text-2xl font-medium text-text-sub dark:text-gray-200 max-w-2xl text-center mb-10 mx-auto leading-relaxed">
+        <p className="text-lg md:text-2xl font-medium text-gray-900 max-w-2xl text-center mb-10 mx-auto leading-relaxed">
           {hero?.heroSubtitle || (
             <>
               Experience the spiritual majesty of Uttarakhand.{' '}

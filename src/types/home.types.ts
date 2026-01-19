@@ -8,6 +8,7 @@ export interface Feature {
 export interface Destination {
   id: string;
   name: string;
+  slug: { _type: string; current: string };
   description: string;
   image: string;
   rating?: number;
@@ -21,8 +22,9 @@ export interface Package {
   image: string;
   duration: string;
   rating: number; // 0-5
-  price: number;
   featured?: boolean;
+  slug?: string;
+  destinationSlug?: string;
 }
 
 export interface Testimonial {
