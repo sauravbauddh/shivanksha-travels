@@ -1,56 +1,69 @@
+'use client';
+
 import { TravelPackage } from '@/types';
-import { Star, Share2, Heart, Check, X } from 'lucide-react';
+import { Star, Check, X, Camera, X as CloseIcon, ChevronLeft, ChevronRight } from 'lucide-react';
+import { urlFor } from '@/lib/sanity/image';
+import { useState } from 'react';
+import Image from 'next/image';
 
 export interface PackageDetailsProps {
-  packageData: TravelPackage & {
-    subtitle?: string;
-    rating: number;
-    reviewCount: number;
-    locations: string[];
-    groupSize?: string;
-    guideLanguages?: string[];
-    transport?: string;
-    dates?: {
-      available: boolean;
-      startDates?: string[];
-    };
-  };
+  packageData: TravelPackage;
 }
 
 export function PackageDetails({ packageData }: PackageDetailsProps) {
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Combine mainImage and gallery for the full gallery view
+  const allImages = [
+    packageData.mainImage,
+    ...(packageData.gallery || [])
+  ].filter(Boolean);
+
+  const openGallery = (index: number) => {
+    setCurrentImageIndex(index);
+    setIsGalleryOpen(true);
+  };
+
+  const closeGallery = () => {
+    setIsGalleryOpen(false);
+  };
+
+  const nextImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentImageIndex((prev) => (prev + 1) % allImages.length);
+  };
+
+  const prevImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentImageIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
+  };
+
+  // Helper to safely get image URL
+  const getImageUrl = (image: any) => {
+    try {
+      return urlFor(image).url();
+    } catch (e) {
+      return '/placeholder-image.jpg'; // Fallback
+    }
+  };
+
+  const locations = packageData.destinations?.map(d => d.name).join(', ') || '';
+
   return (
     <main className="max-w-[1200px] mx-auto px-6 py-12 pb-24 font-sans text-text-main dark:text-[#f5f5f7] bg-white dark:bg-surface-dark transition-colors duration-300">
       {/* Header */}
       <header className="mb-12 text-center md:text-left animate-fade-in-up">
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
           <div className="max-w-3xl">
-            {packageData.subtitle && (
-              <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-3">
-                {packageData.subtitle}
-              </p>
-            )}
             <h1 className="text-4xl md:text-6xl font-semibold tracking-tight text-text-main dark:text-white mb-4 leading-tight">
               {packageData.title}
             </h1>
             <div className="flex flex-wrap items-center gap-4 text-text-sub text-sm font-medium">
-              <span className="flex items-center gap-1">
-                <Star className="w-4 h-4 text-yellow-500 fill-current" />
-                <span className="text-text-main dark:text-white">
-                  {packageData.rating}
-                </span>{' '}
-                ({packageData.reviewCount} reviews)
-              </span>
-              <span>•</span>
-              <span>{packageData.locations.join(', ')}</span>
+              {locations && (
+                  <span>{locations}</span>
+              )}
             </div>
-          </div>
-          <div className="flex gap-3">
-            <button className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-              <Share2 className="w-5 h-5" />
-            </button>
-            <button className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-              <Heart className="w-5 h-5 text-red-500 fill-current" />
-            </button>
           </div>
         </div>
       </header>
@@ -58,42 +71,66 @@ export function PackageDetails({ packageData }: PackageDetailsProps) {
       {/* Image Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16 h-[500px] md:h-[600px]">
         {/* Main Image */}
-        <div className="md:col-span-2 md:row-span-2 relative group cursor-pointer overflow-hidden rounded-3xl">
+        <div 
+          className="md:col-span-2 md:row-span-2 relative group cursor-pointer overflow-hidden rounded-3xl"
+          onClick={() => openGallery(0)}
+        >
           <div
             className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
             style={{
-               backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuB5fBeHelf2zHXWspWSTFQTV88G7IlqiinhVu6AVgXPSN0Gp8CmTqUCw6zmdEQJ1oHcdziMyptPiQjNjbBwImyhE8vWNJ-3Doy0UdACXOWLoIHSunc0L8uKqJwje93u8RAhiN56Gs4lolwrLVKP4OCMUIt54OT9v3KJVgCqVoCOGJzrA1JDvpS11vyi_e9-xT1Jf9kxIeNOLcB9qd07QnAN6RhRFZRWEAEhvNCncD3jHofpH18faljBmppbCN2BcITQwxJldzdeJX14')` 
+               backgroundImage: `url('${getImageUrl(packageData.mainImage)}')` 
             }}
           />
-          <div className="absolute bottom-6 left-6 text-white z-10">
-            <p className="text-sm font-medium opacity-90">Morning Mist</p>
-            <p className="text-lg font-semibold">Mussoorie Hills</p>
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+          <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors" />
         </div>
         
-        {/* Secondary Images - Hardcoding placeholders as per snippet for structure first */}
-        <div className="relative group cursor-pointer overflow-hidden rounded-3xl">
-          <div
-            className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-            style={{
-              backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuBoqZs1xRNno8p0akZwnTeBntQWNHxIpmzoqAxgHWqaFHDHIFeUZ5pu3v6ltCiSu9R9faWLqQFrvijrjMS6o5UdEKf3g4YEbqoNWg3g0GcZx6uobvNx-4YcPXF-jsrYDIg99YQTXdYKjL-SxJgte60f1993HXKCxOxRVLKJXTNGMY43P_V6pBiVzKy-y1QDqszIdLDJmEGJDITwVRIp44j4JUGD22VWIILEPxNyNZwtIEAX8oxAbSZlw4rQMYFr_d8TcDXbN7SvTtzp')`
-            }}
-          />
-        </div>
-        <div className="relative group cursor-pointer overflow-hidden rounded-3xl">
-          <div
-            className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-            style={{
-              backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuAkV_LoVMkDhyHuuPCG1tI_I6jsyToIzydHWg9NCeAXVISQ8vhGgtydJR6NZdEFjJ9VLQ9kGOjQGilv1_65VNBh-dagDLWiGJVrSuSSmH6pf31PVEbYhnBuCT9noe0RwVUe0HK5z7R6jAMMdRvb4-Ic_jwwaBBF9JlMuqmquWKHsZcuAUWGsWvYNfC_QhWkjH9OUcoPvpq8fxTE2WAjZofV7IYa4HWeKcdm2slwZOMXpMt_gZgpX465TKx4b8cApW4vErJUiiv0Ll05')`
-            }}
-          />
-          <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <span className="text-white font-medium border border-white/30 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full text-sm">
-              View Gallery
-            </span>
-          </div>
-        </div>
+        {/* Secondary Images - Display up to 2 items from gallery if available */}
+        {packageData.gallery && packageData.gallery.length > 0 && (
+            <div 
+                className="relative group cursor-pointer overflow-hidden rounded-3xl"
+                onClick={() => openGallery(1)}
+            >
+                <div
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                    style={{
+                    backgroundImage: `url('${getImageUrl(packageData.gallery[0])}')`
+                    }}
+                />
+                 <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors" />
+            </div>
+        )}
+
+        {packageData.gallery && packageData.gallery.length > 1 && (
+             <div 
+                className="relative group cursor-pointer overflow-hidden rounded-3xl"
+                onClick={() => openGallery(2)}
+             >
+                <div
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                    style={{
+                    backgroundImage: `url('${getImageUrl(packageData.gallery[1])}')`
+                    }}
+                />
+                <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="text-white font-medium border border-white/30 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full text-sm flex items-center gap-2">
+                    <Camera size={16} /> View Gallery
+                    </span>
+                 </div>
+                 {/* Always show View Gallery button overlay on the last visible grid item if there are more images */}
+                  <div className="absolute inset-0 bg-black/20 flex items-center justify-center md:hidden">
+                    <span className="text-white font-medium border border-white/30 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full text-sm flex items-center gap-2">
+                    <Camera size={16} /> View Gallery
+                    </span>
+                 </div>
+            </div>
+        )}
+        
+        {/* Fallback if no gallery images */}
+        {(!packageData.gallery || packageData.gallery.length === 0) && (
+             <div className="relative group cursor-pointer overflow-hidden rounded-3xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+                 <p className="text-text-sub">No additional images</p>
+             </div>
+        )}
       </div>
 
       <div className="max-w-5xl mx-auto">
@@ -115,30 +152,6 @@ export function PackageDetails({ packageData }: PackageDetailsProps) {
                   {packageData.duration}
                 </p>
               </div>
-              <div>
-                <p className="text-xs text-text-sub uppercase font-semibold mb-1">
-                  Group Size
-                </p>
-                <p className="font-medium text-text-main dark:text-white">
-                  {packageData.groupSize}
-                </p>
-              </div>
-              <div>
-                <p className="text-xs text-text-sub uppercase font-semibold mb-1">
-                  Guide
-                </p>
-                <p className="font-medium text-text-main dark:text-white">
-                  {packageData.guideLanguages?.join(', ')}
-                </p>
-              </div>
-              <div>
-                <p className="text-xs text-text-sub uppercase font-semibold mb-1">
-                  Transport
-                </p>
-                <p className="font-medium text-text-main dark:text-white">
-                  {packageData.transport}
-                </p>
-              </div>
             </div>
           </section>
 
@@ -148,37 +161,39 @@ export function PackageDetails({ packageData }: PackageDetailsProps) {
               <h2 className="text-2xl font-semibold text-text-main dark:text-white">
                 Itinerary
               </h2>
-              <a
-                href="#"
-                className="text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline"
-              >
-                Download PDF
-              </a>
             </div>
             <div className="space-y-12 pl-4 border-l border-gray-200 dark:border-gray-800 ml-2">
-              <div className="relative pl-8">
-                <div className="absolute -left-[5px] top-2 size-2.5 bg-black dark:bg-white rounded-full ring-4 ring-white dark:ring-black"></div>
-                <span className="text-xs font-bold text-text-sub uppercase tracking-wider mb-1 block">
-                  Day 01
-                </span>
-                <h3 className="text-lg font-semibold text-text-main dark:text-white mb-3">
-                  Arrival in Dehradun & Transfer to Mussoorie
-                </h3>
-                <p className="text-text-sub leading-relaxed mb-4">
-                  Pickup from Dehradun airport/railway station. Drive to
-                  Mussoorie. En-route visit Dehradun Zoo. Check-in at hotel and
-                  evening walk at Mall Road.
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  <span className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-xs font-medium rounded-full text-text-sub">
-                    Dinner Included
+              {packageData.itinerary?.map((day, index) => (
+                <div key={index} className="relative pl-8">
+                  <div className="absolute -left-[5px] top-2 size-2.5 bg-black dark:bg-white rounded-full ring-4 ring-white dark:ring-black"></div>
+                  <span className="text-xs font-bold text-text-sub uppercase tracking-wider mb-1 block">
+                    Day {String(day.dayNumber).padStart(2, '0')}
                   </span>
+                  <h3 className="text-lg font-semibold text-text-main dark:text-white mb-3">
+                    {day.title}
+                  </h3>
+                  <p className="text-text-sub leading-relaxed mb-4">
+                    {day.description}
+                  </p>
+                  {day.meals && day.meals.length > 0 && (
+                    <div className="flex flex-wrap gap-2">
+                      {day.meals.map((meal, mealIndex) => (
+                        <span
+                          key={mealIndex}
+                          className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-xs font-medium rounded-full text-text-sub capitalize"
+                        >
+                          {meal} Included
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                  {day.accommodation && (
+                    <p className="text-xs text-text-sub mt-2">
+                      🏨 {day.accommodation}
+                    </p>
+                  )}
                 </div>
-              </div>
-              {/* More items would go here */}
-              <button className="ml-8 text-sm font-medium text-text-main dark:text-white border-b border-black dark:border-white pb-0.5 hover:opacity-70">
-                View Full Itinerary
-              </button>
+              ))}
             </div>
           </section>
 
@@ -226,12 +241,12 @@ export function PackageDetails({ packageData }: PackageDetailsProps) {
               Contact us directly to customize this itinerary, get detailed pricing, and book your perfect journey.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-black dark:bg-white text-white dark:text-black font-semibold rounded-full hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-lg"
-              >
-                Contact Us
-              </a>
+              {/*<a*/}
+              {/*  href="/contact"*/}
+              {/*  className="inline-flex items-center justify-center px-8 py-4 bg-black dark:bg-white text-white dark:text-black font-semibold rounded-full hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-lg"*/}
+              {/*>*/}
+              {/*  Contact Us*/}
+              {/*</a>*/}
               <a
                 href="tel:+919876543210"
                 className="inline-flex items-center justify-center px-8 py-4 bg-white dark:bg-gray-800 text-black dark:text-white font-semibold rounded-full border-2 border-gray-200 dark:border-gray-700 hover:border-primary dark:hover:border-primary transition-all duration-200"
@@ -242,6 +257,47 @@ export function PackageDetails({ packageData }: PackageDetailsProps) {
           </section>
         </div>
       </div>
+
+      {/* Gallery Modal */}
+      {isGalleryOpen && (
+        <div className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm flex items-center justify-center p-4" onClick={closeGallery}>
+            <button 
+                onClick={closeGallery} 
+                className="absolute top-6 right-6 text-white/70 hover:text-white p-2"
+            >
+                <CloseIcon size={32} />
+            </button>
+            
+            <div className="relative w-full max-w-6xl h-full flex items-center justify-center">
+                <button 
+                    onClick={prevImage}
+                    className="absolute left-0 md:-left-12 p-2 text-white/70 hover:text-white transition-colors"
+                >
+                    <ChevronLeft size={48} />
+                </button>
+                
+                <div className="relative w-full h-[80vh] cursor-default" onClick={e => e.stopPropagation()}>
+                    <Image 
+                        src={getImageUrl(allImages[currentImageIndex])} 
+                        alt={packageData.title}
+                        fill
+                        className="object-contain"
+                    />
+                </div>
+
+                <button 
+                    onClick={nextImage}
+                    className="absolute right-0 md:-right-12 p-2 text-white/70 hover:text-white transition-colors"
+                >
+                    <ChevronRight size={48} />
+                </button>
+
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/70 text-sm font-medium bg-black/50 px-3 py-1 rounded-full">
+                    {currentImageIndex + 1} / {allImages.length}
+                </div>
+            </div>
+        </div>
+      )}
     </main>
   );
 }

@@ -28,231 +28,130 @@ const client = createClient({
 const dummyPackages = [
   {
     _type: 'travelPackage',
-    title: 'Divine Char Dham Yatra - 10 Days',
-    slug: { _type: 'slug', current: 'divine-char-dham-yatra-10-days' },
-    description:
-      'Complete spiritual journey covering all four sacred Dhams - Yamunotri, Gangotri, Kedarnath, and Badrinath. Experience the ultimate pilgrimage.',
-    duration: '10 Days / 9 Nights',
-    rating: 4.9,
-    featured: true,
-    highlights: [
-      'Visit all 4 sacred Char Dham sites',
-      'VIP darshan arrangements',
-      'Comfortable hotel stays',
-      'Experienced pilgrimage guide',
-    ],
-    inclusions: [
-      'All accommodation',
-      'All meals',
-      'Transportation (AC vehicle)',
-      'Guide services',
-    ],
-    exclusions: [
-      'Helicopter charges (optional)',
-      'Personal expenses',
-      'Tips & donations',
-    ],
-    destinationRefs: ['char-dham'],
-  },
-  {
-    _type: 'travelPackage',
-    title: 'Kedarnath & Badrinath Sacred Journey - 6 Days',
+    title: '2 Dham Yatra Package (6 Days) - Haridwar to Haridwar',
     slug: {
       _type: 'slug',
-      current: 'kedarnath-badrinath-sacred-journey-6-days',
+      current: '2-dham-yatra-package-6-days-haridwar-to-haridwar',
     },
     description:
-      'Visit two of the most revered Jyotirlingas - Kedarnath and Badrinath. Perfect for devotees seeking divine blessings.',
+      'A 6-day 2 Dham Yatra package covering Kedarnath and Badrinath with a complete round trip from Haridwar. This itinerary is designed for a smooth pilgrimage experience with essential trek planning for Kedarnath, scenic Himalayan routes, and key stopovers including Guptkashi, Joshimath, and Rudraprayag.',
+
+    // You will add this
+    mainImage: undefined,
+
+    // You will add these
+    gallery: [],
+
     duration: '6 Days / 5 Nights',
-    rating: 4.8,
-    featured: true,
-    highlights: [
-      'Kedarnath Temple darshan',
-      'Badrinath Temple visit',
-      'Scenic Himalayan views',
-      'Holy bath in Alaknanda',
-    ],
-    inclusions: [
-      'Hotel accommodation',
-      'Meals (breakfast & dinner)',
-      'Transportation',
-      'Guide assistance',
-    ],
-    exclusions: ['Lunch', 'Personal expenses', 'Helicopter services'],
-    destinationRefs: ['kedarnath-and-badrinath'],
-  },
-  {
-    _type: 'travelPackage',
-    title: 'Do Dham Pilgrimage - Budget Package - 4 Days',
-    slug: { _type: 'slug', current: 'do-dham-pilgrimage-budget-4-days' },
-    description:
-      'Economical pilgrimage package covering two sacred dhams. Ideal for those on a budget seeking spiritual fulfillment.',
-    duration: '4 Days / 3 Nights',
-    rating: 4.5,
-    featured: false,
-    highlights: [
-      'Two dham darshan',
-      'Budget-friendly',
-      'Basic comfortable stays',
-    ],
-    inclusions: ['Basic accommodation', 'Transportation', 'Guide'],
-    exclusions: ['Meals', 'Personal expenses'],
-    destinationRefs: ['do-dham'],
-  },
-  {
-    _type: 'travelPackage',
-    title: 'Nainital Lake City Escape - 3 Days',
-    slug: { _type: 'slug', current: 'nainital-lake-city-escape-3-days' },
-    description:
-      'Rejuvenating getaway to the beautiful lake city of Nainital. Enjoy boating, shopping, and scenic viewpoints.',
-    duration: '3 Days / 2 Nights',
+
     rating: 4.6,
-    featured: true,
+
+    price: 17999,
+
+    // You will add destination references
+    destinations: [],
+
     highlights: [
-      'Naini Lake boating',
-      'Naina Devi Temple',
-      'Mall Road shopping',
-      'Snow View Point',
+      '2 Dham pilgrimage covering Kedarnath and Badrinath',
+      'Round trip itinerary from Haridwar to Haridwar',
+      'Kedarnath trek (approx. 18 km) included with proper scheduling',
+      'Badrinath Temple darshan with return via Joshimath and Rudraprayag',
+      'Scenic Himalayan routes through Guptkashi and major hill towns',
+      'Balanced pacing with comfortable travel halts',
     ],
-    inclusions: ['Hotel stay with lake view', 'Breakfast', 'Local sightseeing'],
-    exclusions: ['Lunch & dinner', 'Boating charges', 'Shopping'],
-    destinationRefs: ['nainital'],
-  },
-  {
-    _type: 'travelPackage',
-    title: 'Mussoorie Queen of Hills - Weekend Getaway',
-    slug: { _type: 'slug', current: 'mussoorie-queen-hills-weekend' },
-    description:
-      'Perfect weekend escape to Mussoorie, the Queen of Hills. Enjoy cable car rides, waterfalls, and colonial charm.',
-    duration: '2 Days / 1 Night',
-    rating: 4.5,
-    featured: true,
-    highlights: [
-      'Gun Hill cable car',
-      'Kempty Falls visit',
-      'Mall Road stroll',
-      'Lal Tibba viewpoint',
+
+    inclusions: [
+      'All transfers and travel as per the itinerary (point-to-point basis)',
+      'Driver allowance, toll taxes, parking charges, and applicable road taxes',
+      'Pickup and drop as per itinerary schedule',
+      'Basic on-ground assistance during the tour (operator level)',
     ],
-    inclusions: ['Hotel accommodation', 'Breakfast', 'Local transport'],
+
     exclusions: [
-      'Meals (except breakfast)',
-      'Cable car tickets',
-      'Personal expenses',
+      'Meals unless specifically included in the final booking',
+      'Accommodation unless explicitly included in the final booking',
+      'Any kind of personal expenses (laundry, tips, shopping, etc.)',
+      'Pony, palki, porter charges, and trekking assistance costs',
+      'Helicopter tickets (if applicable) and additional local transfers',
+      'Entry fees, camera fees, guide charges, or local activity costs',
+      'Travel insurance, medical costs, and emergency evacuation expenses',
+      'Any additional services not mentioned under inclusions',
     ],
-    destinationRefs: ['mussoorie'],
-  },
-  {
-    _type: 'travelPackage',
-    title: 'Bhimtal Serene Lakes Tour - 2 Days',
-    slug: { _type: 'slug', current: 'bhimtal-serene-lakes-tour-2-days' },
-    description:
-      'Peaceful retreat to Bhimtal, known for its beautiful lake and island. Perfect for nature lovers.',
-    duration: '2 Days / 1 Night',
-    rating: 4.4,
+
+    itinerary: [
+      {
+        _type: 'itineraryDay',
+        dayNumber: 1,
+        title: 'Haridwar to Guptkashi',
+        description:
+          'Begin your journey with a drive from Haridwar to Guptkashi. Enjoy scenic views of river valleys and mountain terrain en route. On arrival, check in and relax. Evening free for acclimatization and preparation for the Kedarnath trek.',
+        meals: [],
+        accommodation: '',
+      },
+      {
+        _type: 'itineraryDay',
+        dayNumber: 2,
+        title: 'Guptkashi to Kedarnath',
+        description:
+          'Depart early and proceed to the Kedarnath trek starting point. Begin the trek to Kedarnath (approx. 18 km). On arrival, complete check-in and proceed for Kedarnath Temple darshan subject to time, weather, and queue conditions. Overnight stay at Kedarnath.',
+        meals: [],
+        accommodation: '',
+      },
+      {
+        _type: 'itineraryDay',
+        dayNumber: 3,
+        title: 'Kedarnath to Guptkashi',
+        description:
+          'After early morning darshan (optional, subject to time), begin the trek back to the base point. Continue the drive to Guptkashi. On arrival, check in and rest after the trek. Evening at leisure.',
+        meals: [],
+        accommodation: '',
+      },
+      {
+        _type: 'itineraryDay',
+        dayNumber: 4,
+        title: 'Guptkashi to Badrinath',
+        description:
+          'After breakfast, drive towards Badrinath. The route offers scenic Himalayan landscapes and passes through major hill towns. On arrival, check in and relax. Evening darshan at Badrinath Temple is optional, subject to time availability.',
+        meals: [],
+        accommodation: '',
+      },
+      {
+        _type: 'itineraryDay',
+        dayNumber: 5,
+        title: 'Badrinath to Joshimath to Rudraprayag',
+        description:
+          'Post breakfast, depart from Badrinath and proceed towards Rudraprayag via Joshimath. Enjoy panoramic mountain views and river confluences en route. On arrival, check in and relax. Evening at leisure.',
+        meals: [],
+        accommodation: '',
+      },
+      {
+        _type: 'itineraryDay',
+        dayNumber: 6,
+        title: 'Rudraprayag to Haridwar (Departure)',
+        description:
+          'After breakfast, check out and drive back to Haridwar. Arrival in Haridwar concludes the pilgrimage journey. Drop-off at the designated location as per schedule.',
+        meals: [],
+        accommodation: '',
+      },
+    ],
+
+    destinationRefs: ['do-dham'],
+
     featured: false,
-    highlights: [
-      'Bhimtal Lake boating',
-      'Island aquarium visit',
-      'Nature walks',
-      'Bird watching',
-    ],
-    inclusions: ['Accommodation', 'Breakfast', 'Boat ride'],
-    exclusions: ['Other meals', 'Personal expenses'],
-    destinationRefs: ['bhimtal'],
-  },
-  {
-    _type: 'travelPackage',
-    title: 'Haridwar Spiritual Retreat - 3 Days',
-    slug: { _type: 'slug', current: 'haridwar-spiritual-retreat-3-days' },
-    description:
-      'Immerse yourself in spirituality with Ganga Aarti, temple visits, and yoga sessions in the holy city of Haridwar.',
-    duration: '3 Days / 2 Nights',
-    rating: 4.7,
-    featured: true,
-    highlights: [
-      'Evening Ganga Aarti at Har Ki Pauri',
-      'Temple tour (Mansa Devi, Chandi Devi)',
-      'Yoga & meditation sessions',
-      'Holy dip in Ganges',
-    ],
-    inclusions: [
-      'Hotel stay',
-      'Breakfast & dinner',
-      'Temple transportation',
-      'Yoga instructor',
-    ],
-    exclusions: ['Lunch', 'Cable car tickets', 'Personal expenses'],
-    destinationRefs: ['haridwar'],
-  },
-  {
-    _type: 'travelPackage',
-    title: 'Ramayana Yatra - Epic Journey - 7 Days',
-    slug: { _type: 'slug', current: 'ramayana-yatra-epic-journey-7-days' },
-    description:
-      'Follow the footsteps of Lord Rama through sacred sites. A spiritual journey through Ramayana landmarks.',
-    duration: '7 Days / 6 Nights',
-    rating: 4.8,
-    featured: true,
-    highlights: [
-      'Visit Ramayana circuit sites',
-      'Ayodhya, Chitrakoot, Rameshwaram',
-      'Expert guide narrating epics',
-      'Special puja arrangements',
-    ],
-    inclusions: [
-      'All accommodation',
-      'All meals',
-      'Transportation',
-      'Guide services',
-      'Temple entry fees',
-    ],
-    exclusions: ['Flight tickets', 'Personal shopping', 'Tips'],
-    destinationRefs: ['ramayana-yatra'],
-  },
-  {
-    _type: 'travelPackage',
-    title: 'Ek Dham Special Darshan - 2 Days',
-    slug: { _type: 'slug', current: 'ek-dham-special-darshan-2-days' },
-    description:
-      'Quick pilgrimage to one sacred dham of your choice. Ideal for time-constrained devotees.',
-    duration: '2 Days / 1 Night',
-    rating: 4.3,
-    featured: false,
-    highlights: ['Single dham darshan', 'Quick turnaround', 'Basic comfort'],
-    inclusions: ['Accommodation', 'Transportation', 'Basic meals'],
-    exclusions: ['Extra meals', 'Personal expenses'],
-    destinationRefs: ['ek-dham'],
-  },
-  {
-    _type: 'travelPackage',
-    title: 'Nainital-Mussoorie Hills Combo - 5 Days',
-    slug: { _type: 'slug', current: 'nainital-mussoorie-hills-combo-5-days' },
-    description:
-      'Experience the best of both hill stations in one package. Lakes, mountains, and colonial charm.',
-    duration: '5 Days / 4 Nights',
-    rating: 4.7,
-    featured: true,
-    highlights: [
-      'Nainital lake activities',
-      'Mussoorie sightseeing',
-      'Scenic drives',
-      'Shopping at both places',
-    ],
-    inclusions: [
-      'All hotels',
-      'Breakfast',
-      'Inter-city transfers',
-      'Local sightseeing',
-    ],
-    exclusions: ['Lunch & dinner', 'Activity tickets', 'Shopping'],
-    destinationRefs: ['nainital', 'mussoorie'],
+
+    seo: {
+      metaTitle:
+        '2 Dham Yatra Package (6 Days) | Kedarnath Badrinath | Haridwar Round Trip',
+      metaDescription:
+        'Book a 6-day 2 Dham Yatra package from Haridwar covering Kedarnath and Badrinath. Includes Kedarnath trek planning, scenic routes and key stopovers via Guptkashi, Joshimath and Rudraprayag.',
+    },
   },
 ];
 
 async function getDestinationId(slug: string) {
   const query = `*[_type == "destination" && slug.current == $slug][0]._id`;
-  const destinationId = await client.fetch(query, { slug });
-  return destinationId;
+
+  return await client.fetch(query, { slug });
 }
 
 async function seedPackages() {

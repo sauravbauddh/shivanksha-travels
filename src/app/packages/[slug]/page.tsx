@@ -1,5 +1,5 @@
-import { getPackageDetailsBySlug } from '@/lib/sanity/package-helpers';
-import { getAllPackages } from '@/lib/sanity/queries';
+import { getPackageBySlug, getAllPackages } from '@/lib/sanity/queries';
+import { urlFor } from '@/lib/sanity/image';
 import { PackageDetails } from '@/components/packages/PackageDetails';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
@@ -24,7 +24,7 @@ export async function generateMetadata({
   params,
 }: PackagePageProps): Promise<Metadata> {
   const { slug } = await params;
-  const packageData = await getPackageDetailsBySlug(slug);
+  const packageData = await getPackageBySlug(slug);
 
   if (!packageData) {
     return {
@@ -48,7 +48,7 @@ export async function generateMetadata({
       images: packageData.mainImage
         ? [
             {
-              url: packageData.mainImage,
+              url: urlFor(packageData.mainImage).url(),
               width: 1200,
               height: 630,
               alt: packageData.title,
@@ -62,7 +62,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title,
       description,
-      images: packageData.mainImage ? [packageData.mainImage] : undefined,
+      images: packageData.mainImage ? [urlFor(packageData.mainImage).url()] : undefined,
     },
     alternates: {
       canonical: `https://shivankshatravels.in/packages/${slug}`,
@@ -73,7 +73,7 @@ export async function generateMetadata({
 export default async function PackagePage({ params }: PackagePageProps) {
   const { slug } = await params;
   console.log("Params slug:", slug);
-  const packageData = await getPackageDetailsBySlug(slug);
+  const packageData = await getPackageBySlug(slug);
 
   if (!packageData) {
     notFound();
@@ -81,45 +81,9 @@ export default async function PackagePage({ params }: PackagePageProps) {
 
   // Transform data to match PackageDetails component expectations
   // The component expects TravelPackage type with SanityImage for mainImage
-  const transformedData = {
-    _id: packageData._id,
-    title: packageData.title,
-    slug: packageData.slug,
-    description: packageData.description,
-    mainImage: {
-      _type: 'image' as const,
-      asset: {
-        _ref: 'placeholder',
-        _type: 'reference' as const,
-      },
-    },
-    gallery: packageData.gallery?.map(() => ({
-      _type: 'image' as const,
-      asset: {
-        _ref: 'placeholder',
-        _type: 'reference' as const,
-      },
-    })),
-    duration: packageData.duration,
-    destinations: packageData.destinations,
-    highlights: packageData.highlights,
-    inclusions: packageData.inclusions,
-    exclusions: packageData.exclusions,
-    itinerary: packageData.itinerary,
-    featured: true,
-    seo: packageData.seo,
-    // Additional props expected by PackageDetails
-    rating: 4.8,
-    reviewCount: 120,
-    locations: packageData.destinations?.map((d: any) => d.name) || [],
-    groupSize: 'Max 12',
-    guideLanguages: ['English', 'Hindi'],
-    transport: 'Private AC Sedan/SUV',
-  };
-
   return (
     <div>
-      <PackageDetails packageData={transformedData} />
+      <PackageDetails packageData={packageData} />
     </div>
   );
 }

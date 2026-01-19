@@ -5,44 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bacede49-f1ca-4d97-82e0-6838ee6b2120" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.sanity/runtime/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/.sanity/runtime/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.sanity/runtime/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/.sanity/runtime/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/static/SanityVision-BCKhREvk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/static/VideoPlayer-D9uu5NIY.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/static/ViteDevServerStopped-ByUwfOhH.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/static/browser-DhU6XXnc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/static/index-D42z2LkY.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/static/index2-C_t_AtW5.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/static/index3-EVEreU3O.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/static/refractor-Bc1ilEIN.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/static/refractor-DPKdqu9p.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/static/refractor-PHUjuymY.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/static/resources-CQbcR886.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/static/resources-cW1NWYgH.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/static/resources3-D8t_aoxz.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/static/resources4-vqjjB9Fn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/static/resources5-BJ3sJUt3.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/static/resources7-Cput4M98.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/static/sanity-D6qxdyx3.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/static/sanity-WRSeCzpm.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/static/sanity.config-Cz9B0jQY.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/static/stegaEncodeSourceMap-DkUSdXOg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/destinations/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/destinations/[slug]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sanity/schemas/travelPackage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sanity/schemas/travelPackage.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/seed-packages.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/seed-packages.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/destinations/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/destinations/[slug]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/destinations/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/destinations/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/package-demo/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/package-demo/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/DestinationCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/DestinationCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/DestinationsSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/DestinationsSection.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/PackageCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/PackageCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/packages/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/packages/[slug]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/HeroSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/HeroSection.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/home/PackagesSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/PackagesSection.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/TestimonialsSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/TestimonialsSection.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/packages/PackageDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/packages/PackageDetails.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/data.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/data.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/mock-data.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/mock-data.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/sanity/queries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/sanity/queries.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/home.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/home.types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -139,6 +112,9 @@
       <workItem from="1768223764115" duration="15000" />
       <workItem from="1768375087680" duration="5076000" />
       <workItem from="1768732840753" duration="4832000" />
+      <workItem from="1768804830528" duration="24000" />
+      <workItem from="1768805477599" duration="721000" />
+      <workItem from="1768841418959" duration="6482000" />
     </task>
     <servers />
   </component>
@@ -167,5 +143,17 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/scripts/seed-packages.ts</url>
+          <line>148</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

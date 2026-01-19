@@ -106,9 +106,70 @@ export default defineType({
     }),
     defineField({
       name: 'itinerary',
-      title: 'Detailed Itinerary',
+      title: 'Day-wise Itinerary',
       type: 'array',
-      of: [{ type: 'block' }],
+      of: [
+        {
+          type: 'object',
+          name: 'itineraryDay',
+          title: 'Day',
+          fields: [
+            {
+              name: 'dayNumber',
+              title: 'Day Number',
+              type: 'number',
+              validation: (Rule) => Rule.required().positive().integer(),
+            },
+            {
+              name: 'title',
+              title: 'Day Title',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+              description:
+                'e.g., "Arrival in Dehradun & Transfer to Mussoorie"',
+            },
+            {
+              name: 'description',
+              title: 'Day Description',
+              type: 'text',
+              rows: 5,
+              validation: (Rule) => Rule.required(),
+              description: 'Detailed description of activities for this day',
+            },
+            {
+              name: 'meals',
+              title: 'Meals Included',
+              type: 'array',
+              of: [{ type: 'string' }],
+              options: {
+                list: [
+                  { title: 'Breakfast', value: 'breakfast' },
+                  { title: 'Lunch', value: 'lunch' },
+                  { title: 'Dinner', value: 'dinner' },
+                ],
+              },
+            },
+            {
+              name: 'accommodation',
+              title: 'Accommodation Type',
+              type: 'string',
+              description: 'Optional: e.g., "Hotel", "Camp", "Guesthouse"',
+            },
+          ],
+          preview: {
+            select: {
+              dayNumber: 'dayNumber',
+              title: 'title',
+            },
+            prepare(selection) {
+              const { dayNumber, title } = selection;
+              return {
+                title: `Day ${dayNumber}: ${title}`,
+              };
+            },
+          },
+        },
+      ],
     }),
     defineField({
       name: 'featured',

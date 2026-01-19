@@ -22,14 +22,14 @@ export const PackagesSection = async () => {
           ))}
         </div>
 
-        <div className="text-center">
-          <Link
-            href="#"
-            className="inline-flex items-center gap-2 text-text-main dark:text-white font-semibold hover:text-primary transition-colors hover:gap-3"
-          >
-            Compare All Packages <Icon name="arrow_forward" size={20} />
-          </Link>
-        </div>
+        {/*<div className="text-center">*/}
+        {/*  <Link*/}
+        {/*    href="#"*/}
+        {/*    className="inline-flex items-center gap-2 text-text-main dark:text-white font-semibold hover:text-primary transition-colors hover:gap-3"*/}
+        {/*  >*/}
+        {/*    Compare All Packages <Icon name="arrow_forward" size={20} />*/}
+        {/*  </Link>*/}
+        {/*</div>*/}
       </div>
     </section>
   );

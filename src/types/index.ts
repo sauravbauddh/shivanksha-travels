@@ -22,9 +22,17 @@ export interface TravelPackage {
   highlights?: string[];
   inclusions?: string[];
   exclusions?: string[];
-  itinerary?: unknown[];
+  itinerary?: ItineraryDay[];
   featured?: boolean;
   seo?: SEOSettings;
+}
+
+export interface ItineraryDay {
+  dayNumber: number;
+  title: string;
+  description: string;
+  meals?: ('breakfast' | 'lunch' | 'dinner')[];
+  accommodation?: string;
 }
 
 export interface Destination {

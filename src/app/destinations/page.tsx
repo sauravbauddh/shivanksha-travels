@@ -64,11 +64,11 @@ export default async function DestinationListingPage() {
         </div>
       </section>
       
-       <div className="text-center pb-20">
-            <Link href="/" className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all">
-                View More Destinations <Icon name="arrow_forward" size={18} />
-            </Link>
-       </div>
+       {/*<div className="text-center pb-20">*/}
+       {/*     <Link href="/" className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all">*/}
+       {/*         View More Destinations <Icon name="arrow_forward" size={18} />*/}
+       {/*     </Link>*/}
+       {/*</div>*/}
 
     </main>
   );
