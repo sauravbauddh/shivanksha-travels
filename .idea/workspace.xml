@@ -4,19 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bacede49-f1ca-4d97-82e0-6838ee6b2120" name="Changes" comment="">
+    <list default="true" id="bacede49-f1ca-4d97-82e0-6838ee6b2120" name="Changes" comment="changes and fixes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sanity/schemas/travelPackage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sanity/schemas/travelPackage.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/seed-packages.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/seed-packages.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/destinations/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/destinations/[slug]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/destinations/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/destinations/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/packages/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/packages/[slug]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/home/HeroSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/HeroSection.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/PackagesSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/PackagesSection.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/TestimonialsSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/TestimonialsSection.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/packages/PackageDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/packages/PackageDetails.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +36,9 @@
     &quot;accountId&quot;: &quot;1932d8d8-35f5-40b7-9068-d4fbee4fd4b1&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 4
@@ -97,7 +93,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-WS-253.29346.242" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-WS-253.30387.83" />
       </set>
     </attachedChunks>
   </component>
@@ -114,8 +110,21 @@
       <workItem from="1768732840753" duration="4832000" />
       <workItem from="1768804830528" duration="24000" />
       <workItem from="1768805477599" duration="721000" />
-      <workItem from="1768841418959" duration="6482000" />
+      <workItem from="1768841418959" duration="6548000" />
+      <workItem from="1768903500739" duration="3000" />
+      <workItem from="1768924106991" duration="3915000" />
+      <workItem from="1768979633892" duration="39000" />
+      <workItem from="1770307177560" duration="697000" />
     </task>
+    <task id="LOCAL-00001" summary="changes and fixes">
+      <option name="closed" value="true" />
+      <created>1768848909101</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1768848909101</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -144,13 +153,16 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="changes and fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="changes and fixes" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/scripts/seed-packages.ts</url>
-          <line>148</line>
-          <properties lambdaOrdinal="-1" />
+          <line>136</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

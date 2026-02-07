@@ -17,16 +17,17 @@ export const HeroSection = async () => {
     <section className="relative w-full h-[90vh] md:h-screen pt-16 flex flex-col items-center justify-end md:justify-center overflow-hidden bg-black">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <img
+        <Image
           alt={hero?.heroTitle || 'DevBhoomi'}
           className="w-full h-full object-cover opacity-80 md:opacity-90 dark:opacity-80 dark:md:opacity-90"
           src={bgImage}
+          fill
         />
         <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-transparent to-white/90 md:to-transparent dark:from-black/30 dark:via-transparent dark:to-black/80 dark:md:to-transparent"></div>
       </div>
       {/* Content */}
       <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 pb-20 md:pb-0 text-center flex flex-col items-center">
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-gray-900 mb-6 drop-shadow-2xl text-center">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-6 drop-shadow-2xl text-center">
           {hero?.heroTitle ? (
             hero.heroTitle
           ) : (
@@ -37,7 +38,7 @@ export const HeroSection = async () => {
           )}
         </h1>
 
-        <p className="text-lg md:text-2xl font-medium text-gray-900 max-w-2xl text-center mb-10 mx-auto leading-relaxed">
+        <p className="text-lg md:text-2xl font-medium text-white max-w-2xl text-center mb-10 mx-auto leading-relaxed">
           {hero?.heroSubtitle || (
             <>
               Experience the spiritual majesty of Uttarakhand.{' '}

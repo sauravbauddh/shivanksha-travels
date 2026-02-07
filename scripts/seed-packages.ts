@@ -26,126 +26,114 @@ const client = createClient({
 
 // Dummy package data matching actual destinations
 const dummyPackages = [
+
   {
     _type: 'travelPackage',
-    title: '2 Dham Yatra Package (6 Days) - Haridwar to Haridwar',
+    title: 'Kedarnath Yatra From Haridwar',
     slug: {
       _type: 'slug',
-      current: '2-dham-yatra-package-6-days-haridwar-to-haridwar',
+      current: 'kedarnath-yatra-from-haridwar',
     },
     description:
-      'A 6-day 2 Dham Yatra package covering Kedarnath and Badrinath with a complete round trip from Haridwar. This itinerary is designed for a smooth pilgrimage experience with essential trek planning for Kedarnath, scenic Himalayan routes, and key stopovers including Guptkashi, Joshimath, and Rudraprayag.',
+      'Kedarnath Dham is one of the most sacred Hindu pilgrimage destinations and among the 12 Jyotirlingas of Lord Shiva in India. Located at an altitude of approximately 3580 meters in Uttarakhand, the shrine holds deep spiritual significance. This tour covers the Kedarnath trek, darshan at the holy temple, and key spiritual stopovers including Guptkashi, Panch Prayag confluences, and Rishikesh sightseeing.',
 
-    // You will add this
+    // You will add
     mainImage: undefined,
 
-    // You will add these
+    // You will add
     gallery: [],
 
-    duration: '6 Days / 5 Nights',
+    duration: '4 Days / 3 Nights',
+    rating: 0,
+    price: 200,
 
-    rating: 4.6,
-
-    price: 17999,
-
-    // You will add destination references
     destinations: [],
 
     highlights: [
-      '2 Dham pilgrimage covering Kedarnath and Badrinath',
-      'Round trip itinerary from Haridwar to Haridwar',
-      'Kedarnath trek (approx. 18 km) included with proper scheduling',
-      'Badrinath Temple darshan with return via Joshimath and Rudraprayag',
-      'Scenic Himalayan routes through Guptkashi and major hill towns',
-      'Balanced pacing with comfortable travel halts',
+      'Kedarnath Temple darshan (one of the 12 Jyotirlingas of Lord Shiva)',
+      'Drive via Devprayag and Rudraprayag confluences',
+      'Visit Ardh Narishwar Temple in Guptkashi',
+      'Trek from Gaurikund to Kedarnath (options: pony/doli/helicopter at own cost)',
+      'Buffer day planning for weather variability in Kedarnath region',
+      'Visit Panch Prayag confluences (spiritual significance of river sangams)',
+      'Rishikesh sightseeing: Ram Jhula and Laxman Jhula',
+      'Optional visit to Triyugi Narayan Temple (extra cost)',
     ],
 
     inclusions: [
-      'All transfers and travel as per the itinerary (point-to-point basis)',
-      'Driver allowance, toll taxes, parking charges, and applicable road taxes',
-      'Pickup and drop as per itinerary schedule',
-      'Basic on-ground assistance during the tour (operator level)',
+      'Accommodation',
+      'Breakfast',
+      'Welcome Drinks',
+      'Lunch',
+      'Transport',
     ],
 
     exclusions: [
-      'Meals unless specifically included in the final booking',
-      'Accommodation unless explicitly included in the final booking',
-      'Any kind of personal expenses (laundry, tips, shopping, etc.)',
-      'Pony, palki, porter charges, and trekking assistance costs',
-      'Helicopter tickets (if applicable) and additional local transfers',
-      'Entry fees, camera fees, guide charges, or local activity costs',
-      'Travel insurance, medical costs, and emergency evacuation expenses',
-      'Any additional services not mentioned under inclusions',
+      'Airport Transfer',
+      'BBQ Night',
+      'Guide',
+      'Insurance',
+      'Outing Ticket',
+      'Activities',
+      'Pony / Doli / Helicopter charges (trek support)',
+      'Local taxi from Sonprayag to Gaurikund (if required)',
+      'Any optional sightseeing / temple visits not mentioned in inclusions',
     ],
 
     itinerary: [
       {
         _type: 'itineraryDay',
         dayNumber: 1,
-        title: 'Haridwar to Guptkashi',
+        title:
+          'Haridwar to Guptkashi (220 km / 8–9 hrs) | Devprayag & Rudraprayag',
         description:
-          'Begin your journey with a drive from Haridwar to Guptkashi. Enjoy scenic views of river valleys and mountain terrain en route. On arrival, check in and relax. Evening free for acclimatization and preparation for the Kedarnath trek.',
-        meals: [],
+          'Drive from Haridwar to Guptkashi via Devprayag and Rudraprayag. Upon arrival, visit the Ardh Narishwar Temple in Guptkashi. Check in at the hotel and relax. Overnight stay in Guptkashi.',
+        meals: ['dinner'],
         accommodation: '',
       },
       {
         _type: 'itineraryDay',
         dayNumber: 2,
-        title: 'Guptkashi to Kedarnath',
+        title:
+          'Guptkashi to Gaurikund to Kedarnath (30 km drive + 19 km trek one way)',
         description:
-          'Depart early and proceed to the Kedarnath trek starting point. Begin the trek to Kedarnath (approx. 18 km). On arrival, complete check-in and proceed for Kedarnath Temple darshan subject to time, weather, and queue conditions. Overnight stay at Kedarnath.',
-        meals: [],
+          'After breakfast, drive to Gaurikund and begin the trek to Kedarnath (options: pony/doli/helicopter at own cost). Visit Kedarnath Temple for darshan. Overnight stay in Kedarnath.\n\nNote: Private and commercial vehicles are not allowed in the Gaurikund area. Travelers may need to hire a local taxi from Sonprayag to Gaurikund at their own cost. Also, due to limited accommodation availability in Kedarnath, stay may be provided on per-bed basis in shared dormitory rooms.',
+        meals: ['breakfast', 'dinner'],
         accommodation: '',
       },
       {
         _type: 'itineraryDay',
         dayNumber: 3,
-        title: 'Kedarnath to Guptkashi',
+        title: 'Kedarnath to Gaurikund to Guptkashi (19 km trek + 30 km drive)',
         description:
-          'After early morning darshan (optional, subject to time), begin the trek back to the base point. Continue the drive to Guptkashi. On arrival, check in and rest after the trek. Evening at leisure.',
-        meals: [],
+          'After morning darshan and puja at Kedarnath Temple, trek down to Gaurikund and drive back to Guptkashi. This day is considered as a buffer due to unpredictable weather conditions in the Kedarnath region. Optional visit to Triyugi Narayan Temple (Shiv Shakti Temple) is possible at an additional cost. Overnight stay in Guptkashi.',
+        meals: ['breakfast', 'dinner'],
         accommodation: '',
       },
       {
         _type: 'itineraryDay',
         dayNumber: 4,
-        title: 'Guptkashi to Badrinath',
+        title:
+          'Guptkashi to Rudraprayag to Rishikesh / Haridwar | Panch Prayag & Dhari Devi',
         description:
-          'After breakfast, drive towards Badrinath. The route offers scenic Himalayan landscapes and passes through major hill towns. On arrival, check in and relax. Evening darshan at Badrinath Temple is optional, subject to time availability.',
-        meals: [],
-        accommodation: '',
-      },
-      {
-        _type: 'itineraryDay',
-        dayNumber: 5,
-        title: 'Badrinath to Joshimath to Rudraprayag',
-        description:
-          'Post breakfast, depart from Badrinath and proceed towards Rudraprayag via Joshimath. Enjoy panoramic mountain views and river confluences en route. On arrival, check in and relax. Evening at leisure.',
-        meals: [],
-        accommodation: '',
-      },
-      {
-        _type: 'itineraryDay',
-        dayNumber: 6,
-        title: 'Rudraprayag to Haridwar (Departure)',
-        description:
-          'After breakfast, check out and drive back to Haridwar. Arrival in Haridwar concludes the pilgrimage journey. Drop-off at the designated location as per schedule.',
-        meals: [],
+          'After breakfast, check out and proceed via Rudraprayag towards Rishikesh/Haridwar. En route, visit the Panch Prayag confluences (where applicable) and Dhari Devi Shaktipeeth for darshan. On arrival, visit prominent Rishikesh sightseeing spots such as Laxman Jhula and Ram Jhula. Drop-off at Dehradun airport/station or the planned drop location. Tour ends.',
+        meals: ['breakfast'],
         accommodation: '',
       },
     ],
 
-    destinationRefs: ['do-dham'],
-
     featured: false,
+
+    destinationRefs: ['ek-dham'],
 
     seo: {
       metaTitle:
-        '2 Dham Yatra Package (6 Days) | Kedarnath Badrinath | Haridwar Round Trip',
+        'Kedarnath Yatra From Haridwar | 4 Days Kedarnath Tour Package',
       metaDescription:
-        'Book a 6-day 2 Dham Yatra package from Haridwar covering Kedarnath and Badrinath. Includes Kedarnath trek planning, scenic routes and key stopovers via Guptkashi, Joshimath and Rudraprayag.',
+        'Book a 4-day Kedarnath Yatra from Haridwar including Guptkashi stay, Kedarnath trek and temple darshan, Panch Prayag confluences and Rishikesh sightseeing.',
     },
   },
+
 ];
 
 async function getDestinationId(slug: string) {
