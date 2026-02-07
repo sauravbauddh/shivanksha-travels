@@ -59,116 +59,6 @@ export default defineType({
       ],
     }),
 
-    // Gallery Section
-    defineField({
-      name: 'gallerySection',
-      title: 'Gallery Section',
-      type: 'object',
-      options: { collapsible: true, collapsed: false },
-      fields: [
-        defineField({
-          name: 'title',
-          title: 'Section Title',
-          type: 'string',
-          initialValue: 'Gallery.',
-        }),
-        defineField({
-          name: 'subtitle',
-          title: 'Section Subtitle',
-          type: 'string',
-          initialValue: 'Moments that take your breath away.',
-        }),
-        defineField({
-          name: 'galleryItems',
-          title: 'Gallery Items',
-          type: 'array',
-          of: [
-            {
-              type: 'object',
-              fields: [
-                defineField({
-                  name: 'mediaType',
-                  title: 'Media Type',
-                  type: 'string',
-                  options: {
-                    list: [
-                      { title: 'Image', value: 'image' },
-                      { title: 'Video', value: 'video' },
-                    ],
-                    layout: 'radio',
-                  },
-                  initialValue: 'image',
-                }),
-                defineField({
-                  name: 'image',
-                  title: 'Image',
-                  type: 'image',
-                  options: { hotspot: true },
-                  hidden: ({ parent }) => parent?.mediaType === 'video',
-                }),
-                defineField({
-                  name: 'videoUrl',
-                  title: 'Video URL',
-                  type: 'url',
-                  description:
-                    'Direct URL to the video file (e.g., mp4) or supported video link.',
-                  hidden: ({ parent }) => parent?.mediaType !== 'video',
-                }),
-                defineField({
-                  name: 'thumbnail',
-                  title: 'Video Thumbnail',
-                  type: 'image',
-                  description:
-                    'Poster image for the video (Required for video items)',
-                  options: { hotspot: true },
-                  hidden: ({ parent }) => parent?.mediaType !== 'video',
-                }),
-                defineField({
-                  name: 'alt',
-                  title: 'Alt Text / Description',
-                  type: 'string',
-                }),
-                defineField({
-                  name: 'width',
-                  title: 'Width Class',
-                  type: 'string',
-                  description:
-                    'Tailwind width class (e.g., w-64, w-80, w-96). Default is auto/flexible.',
-                  options: {
-                    list: [
-                      { title: 'Small (w-64)', value: 'w-64' },
-                      { title: 'Medium (w-80)', value: 'w-80' },
-                      { title: 'Large (w-96)', value: 'w-96' },
-                      { title: 'Extra Large (w-[500px])', value: 'w-[500px]' },
-                      {
-                        title: 'Video Wide (aspect-video)',
-                        value: 'aspect-video',
-                      },
-                    ],
-                  },
-                }),
-              ],
-              preview: {
-                select: {
-                  title: 'alt',
-                  mediaType: 'mediaType',
-                  image: 'image',
-                  thumbnail: 'thumbnail',
-                },
-                prepare({ title, mediaType, image, thumbnail }) {
-                  return {
-                    title: title || (mediaType === 'video' ? 'Video' : 'Image'),
-                    subtitle: mediaType,
-                    media: mediaType === 'video' ? thumbnail : image,
-                  };
-                },
-              },
-            },
-          ],
-        }),
-      ],
-    }),
-
     // Contact/Footer Details
     defineField({
       name: 'contactDetails',
@@ -193,6 +83,12 @@ export default defineType({
           type: 'string',
         }),
         defineField({
+          name: 'whatsappNumber',
+          title: 'WhatsApp Number',
+          type: 'string',
+          description: 'WhatsApp number with country code (e.g., 917668842928)',
+        }),
+        defineField({
           name: 'socialLinks',
           title: 'Social Media Links',
           type: 'object',
@@ -213,6 +109,47 @@ export default defineType({
               title: 'Twitter/X URL',
             }),
           ],
+        }),
+      ],
+    }),
+
+    // Bank Account Details
+    defineField({
+      name: 'bankDetails',
+      title: 'Bank Account Details',
+      type: 'object',
+      options: { collapsible: true, collapsed: false },
+      fields: [
+        defineField({
+          name: 'bankName',
+          title: 'Bank Name',
+          type: 'string',
+          description: 'Name of the bank (e.g., PUNJAB NATIONAL BANK)',
+        }),
+        defineField({
+          name: 'accountHolderName',
+          title: 'Account Holder Name',
+          type: 'string',
+          description: 'Name on the bank account',
+        }),
+        defineField({
+          name: 'accountNumber',
+          title: 'Account Number',
+          type: 'string',
+          description: 'Bank account number',
+        }),
+        defineField({
+          name: 'ifscCode',
+          title: 'IFSC Code',
+          type: 'string',
+          description: 'IFSC code of the bank branch',
+        }),
+        defineField({
+          name: 'branchAddress',
+          title: 'Branch Address',
+          type: 'text',
+          rows: 2,
+          description: 'Address of the bank branch',
         }),
       ],
     }),

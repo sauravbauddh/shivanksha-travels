@@ -1,4 +1,5 @@
-import { getPackageBySlug, getAllPackages } from '@/lib/sanity/queries';
+
+import { getPackageBySlug, getAllPackages, getSiteContent } from '@/lib/sanity/queries';
 import { urlFor } from '@/lib/sanity/image';
 import { PackageDetails } from '@/components/packages/PackageDetails';
 import { notFound } from 'next/navigation';
@@ -13,7 +14,7 @@ interface PackagePageProps {
 // Generate static params for all packages
 export async function generateStaticParams() {
   const packages = await getAllPackages();
-  
+
   return packages.map((pkg: any) => ({
     slug: pkg.slug?.current || '',
   }));
@@ -74,6 +75,8 @@ export default async function PackagePage({ params }: PackagePageProps) {
   const { slug } = await params;
   console.log("Params slug:", slug);
   const packageData = await getPackageBySlug(slug);
+  const siteContent = await getSiteContent();
+  const whatsappNumber = siteContent?.contactDetails?.whatsappNumber || '917668842928';
 
   if (!packageData) {
     notFound();
@@ -83,7 +86,7 @@ export default async function PackagePage({ params }: PackagePageProps) {
   // The component expects TravelPackage type with SanityImage for mainImage
   return (
     <div>
-      <PackageDetails packageData={packageData} />
+      <PackageDetails packageData={packageData} whatsappNumber={whatsappNumber} />
     </div>
   );
 }

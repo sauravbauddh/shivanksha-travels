@@ -3,6 +3,7 @@ import destination from './destination';
 import testimonial from './testimonial';
 import blogPost from './blogPost';
 import siteContent from './siteContent';
+import galleryImage from './galleryImage';
 
 export const schemaTypes = [
   travelPackage,
@@ -10,4 +11,5 @@ export const schemaTypes = [
   testimonial,
   blogPost,
   siteContent,
+  galleryImage,
 ];

@@ -166,15 +166,36 @@ export async function getBlogPostBySlug(slug: string) {
   );
 }
 
-// Fetch global site content (Hero, Footer, Contact)
+// Fetch global site content (Hero, Footer, Contact, Bank Details)
 export async function getSiteContent() {
   return client.fetch(
     `*[_type == "siteContent"][0] {
       _id,
       logo,
       heroSection,
-      gallerySection,
-      contactDetails
+      contactDetails {
+        ...,
+        whatsappNumber
+      },
+      bankDetails
+    }`
+  );
+}
+
+// Fetch all gallery images ordered by order field
+export async function getGalleryImages() {
+  return client.fetch(
+    `*[_type == "galleryImage"] | order(order asc, _createdAt desc) {
+      _id,
+      _key,
+      title,
+      mediaType,
+      image,
+      videoUrl,
+      thumbnail,
+      alt,
+      width,
+      order
     }`
   );
 }
